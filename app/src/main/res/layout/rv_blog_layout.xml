@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="@drawable/img_bg"
+    android:layout_margin="15dp">
+
+    <ImageView
+        android:id="@+id/blog_img1"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:src="@drawable/law_illus" />
+
+    <TextView
+        android:id="@+id/blog_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/law"
+        android:gravity="center_vertical|center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
