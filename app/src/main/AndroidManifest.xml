@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,52 +12,56 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.NourishingGeniusStudent"
-        tools:targetApi="31" >
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
         <activity
-            android:name=".ui.view.Career.CareerInfo"
+            android:name=".ui.view.career.DegreeList"
             android:exported="false" />
         <activity
-            android:name=".ui.view.FeedBack"
+            android:name=".ui.view.career.CareerInfo"
             android:exported="false" />
         <activity
-            android:name=".ui.view.HelpDeskActivity"
+            android:name=".ui.view.setting.FeedBack"
             android:exported="false" />
         <activity
-            android:name=".ui.view.EnrollmentActivity"
+            android:name=".ui.view.setting.HelpDeskActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.SettingActivity"
+            android:name=".ui.view.subscription.EnrollmentActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.Domain.DomainActivity"
+            android:name=".ui.view.setting.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.GetCounsellingActivity"
+            android:name=".ui.view.domain.DomainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.IdentifyGeniusActivity"
+            android:name=".ui.view.subscription.GetCounsellingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.ProfileActivity"
+            android:name=".ui.view.assessment.IdentifyGeniusActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.BlogActivity"
+            android:name=".ui.view.profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.Career.CareerActivity"
+            android:name=".ui.view.blog.BlogActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.DashBoardActivity"
+            android:name=".ui.view.career.CareerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Auth.ForgotPassword"
+            android:name=".ui.view.home.DashBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Auth.SignupActivity"
+            android:name=".ui.view.auth.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".ui.Auth.LoginActivity"
-            android:exported="true" >
+            android:name=".ui.view.auth.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.auth.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

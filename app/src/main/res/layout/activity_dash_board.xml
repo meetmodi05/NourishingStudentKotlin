@@ -5,7 +5,7 @@
     android:id="@+id/dr1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.DashBoardActivity">
+    tools:context=".ui.view.home.DashBoardActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

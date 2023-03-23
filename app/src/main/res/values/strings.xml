@@ -26,7 +26,9 @@
     <string name="todo">TODO</string>
     <string name="career_info">Career Info</string>
     <string name="law">Law</string>
+    <string name="science">Science</string>
     <string name="medical">Medical</string>
+    <string name="commerce">Commerce</string>
     <string name="sports">Sports</string>
     <string name="enterpreneur">Enterpreneur</string>
     <string name="engineering">Engineering</string>
@@ -145,4 +147,6 @@
     <string name="username">User Name</string>
     <string name="newsletters">Newsletters</string>
     <string name="all">All</string>
+    <string name="session_expired">Session Expired</string>
+    <string name="arts">Arts</string>
 </resources>

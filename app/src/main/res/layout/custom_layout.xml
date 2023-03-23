@@ -5,13 +5,14 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageView
@@ -41,7 +42,7 @@
 
                 <TextView
                     android:id="@+id/home_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -75,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/careers_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -108,7 +109,7 @@
 
                 <TextView
                     android:id="@+id/reports_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -141,7 +142,7 @@
 
                 <TextView
                     android:id="@+id/counseling_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -174,7 +175,7 @@
 
                 <TextView
                     android:id="@+id/blogs_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -208,7 +209,7 @@
 
                 <TextView
                     android:id="@+id/dExpert_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -241,7 +242,7 @@
 
                 <TextView
                     android:id="@+id/caseStudies_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -274,7 +275,7 @@
 
                 <TextView
                     android:id="@+id/policies_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -307,7 +308,7 @@
 
                 <TextView
                     android:id="@+id/setting_tv_cl"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
@@ -325,5 +326,5 @@
                     android:src="@drawable/two_tone_navigate_next_24" />
             </LinearLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

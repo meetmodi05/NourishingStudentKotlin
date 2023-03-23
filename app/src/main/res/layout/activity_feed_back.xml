@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.FeedBack">
+    tools:context=".ui.view.setting.FeedBack">
 
     <RelativeLayout
         android:id="@+id/feedback_relative"
