@@ -26,6 +26,10 @@
     <string name="todo">TODO</string>
     <string name="career_info">Career Info</string>
     <string name="law">Law</string>
+    <string name="medical">Medical</string>
+    <string name="sports">Sports</string>
+    <string name="enterpreneur">Enterpreneur</string>
+    <string name="engineering">Engineering</string>
     <string name="impact">Impact</string>
     <string name="specialization">Specialization</string>
     <string name="career_paths">Career Paths</string>
@@ -138,4 +142,6 @@
     <string name="blogs">Blogs</string>
     <string name="most_popular">Most Popular</string>
     <string name="packages">Packages</string>
+    <string name="username">User Name</string>
+    <string name="newsletters">Newsletters</string>
 </resources>

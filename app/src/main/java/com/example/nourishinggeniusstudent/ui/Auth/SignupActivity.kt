@@ -1,4 +1,4 @@
-package com.example.nourishinggeniusstudent.ui
+package com.example.nourishinggeniusstudent.ui.Auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
