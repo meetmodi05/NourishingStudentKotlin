@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.nourishinggeniusstudent.Adapter.*
 import com.example.nourishinggeniusstudent.R
@@ -141,8 +142,8 @@ class DashBoardActivity : AppCompatActivity() {
                 getString(R.string.careerTxt)
             )
         )
-        binding.mostPopularRV.layoutManager = LinearLayoutManager(this)
-        binding.mostPopularRV.adapter = MostPuplarAdapter(this, mostPopularList)
+        binding.mostPopularRV.layoutManager = LinearLayoutManager(this, VERTICAL, false)
+        binding.mostPopularRV.adapter = MostPopularAdapter(this, mostPopularList)
 
         binding.tvSeeAll.setOnClickListener {
             startActivity(

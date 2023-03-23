@@ -17,7 +17,7 @@ class CareerAdapter(
 ) : Adapter<CareerAdapter.MyView>() {
     inner class MyView(var binding: CareerLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: CareerModel) {
-            val img = binding.img1.setImageResource(blog.img!!)
+            binding.img1.setImageResource(blog.img!!)
             binding.tvTitle3.text = blog.title
             Glide.with(binding.img1).load(blog.img).override(512, 312).into(binding.img1)
 

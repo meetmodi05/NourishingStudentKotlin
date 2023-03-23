@@ -1,7 +1,8 @@
 package com.example.nourishinggeniusstudent.ui.view.Domain
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nourishinggeniusstudent.Adapter.AllDomainAdapter
 import com.example.nourishinggeniusstudent.R
@@ -26,5 +27,13 @@ class DomainActivity : AppCompatActivity() {
 
         binding.rvBLogList.layoutManager = GridLayoutManager(this, 2)
         binding.rvBLogList.adapter = AllDomainAdapter(this, topExpertList)
+
+        val dropList = arrayListOf<String>()
+        dropList.add("Entrepreneur")
+        dropList.add("Lawyer")
+        dropList.add("Scientist")
+        dropList.add("Engineer")
+        val aa = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dropList)
+        binding.autoCompleteTV.setAdapter(aa)
     }
 }

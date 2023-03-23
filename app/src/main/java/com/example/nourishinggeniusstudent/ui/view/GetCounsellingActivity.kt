@@ -3,7 +3,7 @@ package com.example.nourishinggeniusstudent.ui.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nourishinggeniusstudent.PackageAdapter
+import com.example.nourishinggeniusstudent.Adapter.PackageAdapter
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityGetCounsellingBinding
 import com.example.nourishinggeniusstudent.model.PackagesModel

@@ -1,5 +1,6 @@
 package com.example.nourishinggeniusstudent.Adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,7 @@ import com.example.nourishinggeniusstudent.model.MostPopularModel
 import com.example.nourishinggeniusstudent.ui.view.BlogActivity
 
 class BlogAdapter(
-    private val blogModelArrayList: BlogActivity,
+    private val blogActivity: BlogActivity,
     private val blogList: ArrayList<MostPopularModel>
 ) : Adapter<BlogAdapter.MyViewHolder>() {
 
@@ -27,14 +28,13 @@ class BlogAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding(blogList[position])
-
     }
 
     class MyViewHolder(var binding: MostPopularLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: MostPopularModel) {
             binding.imageView.setImageResource(blog.mainImg!!)
-            binding.imageView2.setImageResource(blog.icon!!)
+            binding.icon.setImageResource(blog.icon!!)
             binding.tvDescription.text = blog.description
             binding.tvQTitle.text = blog.title
             binding.tvMiniTitle.text = blog.miniTitle

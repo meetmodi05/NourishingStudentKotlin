@@ -144,4 +144,5 @@
     <string name="packages">Packages</string>
     <string name="username">User Name</string>
     <string name="newsletters">Newsletters</string>
+    <string name="all">All</string>
 </resources>

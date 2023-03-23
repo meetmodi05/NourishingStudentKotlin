@@ -7,15 +7,15 @@ import com.example.nourishinggeniusstudent.databinding.MostPopularLayoutBinding
 import com.example.nourishinggeniusstudent.model.MostPopularModel
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 
-class MostPuplarAdapter(
+class MostPopularAdapter(
     private val dashBoardActivity: DashBoardActivity,
     private val mostPopularList: ArrayList<MostPopularModel>
-) : RecyclerView.Adapter<MostPuplarAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<MostPopularAdapter.ViewHolder>() {
     class ViewHolder(var binding: MostPopularLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: MostPopularModel) {
             binding.imageView.setImageResource(blog.mainImg!!)
-            binding.imageView2.setImageResource(blog.icon!!)
+            binding.icon.setImageResource(blog.icon!!)
             binding.tvDescription.text = blog.description
             binding.tvQTitle.text = blog.title
             binding.tvMiniTitle.text = blog.miniTitle

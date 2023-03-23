@@ -1,11 +1,14 @@
 package com.example.nourishinggeniusstudent.Adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvBlogLayoutBinding
 import com.example.nourishinggeniusstudent.model.BlogModel
+import com.example.nourishinggeniusstudent.ui.view.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 
 class RvBlogAdapter(
@@ -32,5 +35,9 @@ class RvBlogAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(blogList[position])
+        holder.itemView.setOnClickListener{
+            val intent = Intent(dashBoardActivity, BlogActivity::class.java)
+            dashBoardActivity.startActivity(intent)
+        }
     }
 }

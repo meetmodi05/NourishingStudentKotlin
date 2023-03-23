@@ -1,6 +1,7 @@
 package com.example.nourishinggeniusstudent.ui.view
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nourishinggeniusstudent.Adapter.BlogAdapter
@@ -31,6 +32,15 @@ class BlogActivity : AppCompatActivity() {
 
 
         binding.rvBLogList.layoutManager = LinearLayoutManager(this)
-        binding.rvBLogList.adapter = BlogAdapter(this,blogList)
+        binding.rvBLogList.adapter = BlogAdapter(this, blogList)
+
+        val dropList = arrayListOf<String>()
+        dropList.add("Careers")
+        dropList.add("Discipline")
+        dropList.add("Self Assessment")
+        dropList.add("Productivity")
+
+        val dropAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dropList)
+        binding.autoCompleteTV.setAdapter(dropAdapter)
     }
 }

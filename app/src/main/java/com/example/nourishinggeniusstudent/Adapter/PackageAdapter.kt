@@ -1,11 +1,10 @@
-package com.example.nourishinggeniusstudent
+package com.example.nourishinggeniusstudent.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvpackageslayoutBinding
-import com.example.nourishinggeniusstudent.model.MostPopularModel
 import com.example.nourishinggeniusstudent.model.PackagesModel
 import com.example.nourishinggeniusstudent.ui.view.GetCounsellingActivity
 
@@ -22,7 +21,7 @@ class PackageAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PackageAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             RvpackageslayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -32,7 +31,7 @@ class PackageAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: PackageAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(packageList[position])
     }
 

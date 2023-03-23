@@ -1,14 +1,14 @@
 package com.example.nourishinggeniusstudent.Adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.nourishinggeniusstudent.databinding.RvBlogLayoutBinding
 import com.example.nourishinggeniusstudent.databinding.RvDomainLayoutBinding
-import com.example.nourishinggeniusstudent.model.BlogModel
 import com.example.nourishinggeniusstudent.model.DomainModel
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
+import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
 
 class DomainAdapter(
     private val dashBoardActivity: DashBoardActivity,
@@ -33,5 +33,9 @@ class DomainAdapter(
 
     override fun onBindViewHolder(holder: DomainHolder, position: Int) {
         holder.binding(domainExpertList[position])
+        holder.itemView.setOnClickListener {
+            val intent = Intent(dashBoardActivity, DomainActivity::class.java)
+            dashBoardActivity.startActivity(intent)
+        }
     }
 }
