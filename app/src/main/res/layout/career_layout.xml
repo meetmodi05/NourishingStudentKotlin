@@ -9,8 +9,7 @@
         android:id="@+id/img1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/career_bg_img"
-        android:src="@drawable/law_illus" />
+        android:background="@drawable/career_bg_img" />
 
     <TextView
         android:id="@+id/tv_title3"

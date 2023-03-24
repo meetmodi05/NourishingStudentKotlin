@@ -10,4 +10,6 @@ object Constants {
     const val FLAG = "flag"
     const val PAGE_SIZE = 10
 
+    const val CAREER_ID = "CAREER_ID"
+
 }

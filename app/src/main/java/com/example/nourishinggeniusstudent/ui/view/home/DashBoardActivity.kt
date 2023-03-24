@@ -128,26 +128,20 @@ class DashBoardActivity : BaseActivity() {
         binding.rvSuccess.layoutManager = GridLayoutManager(this, 2)
         binding.rvSuccess.adapter = SuccessfulAdapter(this, successfulList)
 
-        val mostPopularList = arrayListOf<MostPopularModel>()
+        val mostPopularList = arrayListOf<BlogDataModel>()
 
         mostPopularList.add(
-            MostPopularModel(
-                R.drawable.img_1,
-                getString(R.string.in_self_assessment),
-                getString(R.string.why_is_career_guidence_important),
-                getString(R.string.careerTxt)
+            BlogDataModel(
+                0, getString(R.string.why_is_career_guidence_important), ""
             )
         )
         mostPopularList.add(
-            MostPopularModel(
-                R.drawable.img_1,
-                getString(R.string.in_self_assessment),
-                getString(R.string.why_is_career_guidence_important),
-                getString(R.string.careerTxt)
+            BlogDataModel(
+                0, getString(R.string.why_is_career_guidence_important), ""
             )
         )
         binding.mostPopularRV.layoutManager = LinearLayoutManager(this, VERTICAL, false)
-        binding.mostPopularRV.adapter = BlogAdapter(this, mostPopularList)
+        binding.mostPopularRV.adapter = BlogAdapter(mostPopularList)
 
         binding.tvSeeAll.setOnClickListener {
             startActivity(

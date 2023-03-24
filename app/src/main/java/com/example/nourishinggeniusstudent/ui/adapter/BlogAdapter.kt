@@ -3,20 +3,21 @@ package com.example.nourishinggeniusstudent.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.bumptech.glide.Glide
+import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.MostPopularLayoutBinding
-import com.example.nourishinggeniusstudent.model.data.MostPopularModel
-import com.example.nourishinggeniusstudent.ui.view.blog.BlogActivity
+import com.example.nourishinggeniusstudent.model.data.BlogDataModel
+import com.example.nourishinggeniusstudent.model.data.BlogModel
 
-class BlogAdapter(
-    private val context: Context,
-    private val blogList: ArrayList<MostPopularModel>
+class BlogAdapter( private val blogList: ArrayList<BlogDataModel>
 ) : Adapter<BlogAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            MostPopularLayoutBinding.inflate(
+            parent.context, MostPopularLayoutBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -27,17 +28,19 @@ class BlogAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding(blogList[position])
+        holder.bind(blogList[position])
     }
 
-    class MyViewHolder(var binding: MostPopularLayoutBinding) :
+    class MyViewHolder(val mContext: Context, var binding: MostPopularLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun binding(blog: MostPopularModel) {
-            binding.imageView.setImageResource(blog.mainImg!!)
-//            binding.icon.setImageResource(blog.icon!!)
-            binding.tvDescription.text = blog.description
-            binding.tvQTitle.text = blog.title
-            binding.tvMiniTitle.text = blog.miniTitle
+        fun bind(blog: BlogDataModel) {
+            Glide.with(mContext).load(blog.postImageUrl).placeholder(
+                ContextCompat.getDrawable(
+                    mContext, R.drawable.img_1
+                )
+            ).into(binding.imageView)
+            binding.tvMiniTitle.text = blog.postName
+//            binding.tvDescription.text = blog.description
         }
     }
 }

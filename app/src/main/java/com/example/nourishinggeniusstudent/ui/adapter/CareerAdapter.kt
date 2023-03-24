@@ -1,33 +1,39 @@
 package com.example.nourishinggeniusstudent.ui.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
+import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.CareerLayoutBinding
-import com.example.nourishinggeniusstudent.model.data.CareerModel
-import com.example.nourishinggeniusstudent.ui.view.career.CareerActivity
-import com.example.nourishinggeniusstudent.ui.view.career.CareerInfo
+import com.example.nourishinggeniusstudent.model.careers.Careers
 
 class CareerAdapter(
-    private val context: Context,
-    private val careerList: ArrayList<CareerModel>,
-    private val listener: () -> Unit
-) : Adapter<CareerAdapter.MyView>() {
-    inner class MyView(var binding: CareerLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun binding(blog: CareerModel) {
-            binding.img1.setImageResource(blog.img!!)
-            binding.tvTitle3.text = blog.title
-            Glide.with(binding.img1).load(blog.img).override(512, 312).into(binding.img1)
+    private val careerList: ArrayList<Careers>, private val listener: (Careers) -> Unit
+) : Adapter<CareerAdapter.MyView>(), Filterable {
 
+    val filteredList: ArrayList<Careers> = arrayListOf()
+
+    inner class MyView(val mContext: Context, var binding: CareerLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun binding(blog: Careers) {
+            binding.tvTitle3.text = blog.career_title
+            Glide.with(mContext).load(blog.career_logo).override(512, 312).placeholder(
+                ContextCompat.getDrawable(
+                    mContext, R.drawable.ic_career
+                )
+            ).override(512, 312).into(binding.img1)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyView {
         return MyView(
+            parent.context,
             CareerLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
@@ -39,8 +45,29 @@ class CareerAdapter(
     override fun onBindViewHolder(holder: MyView, position: Int) {
         holder.binding(careerList[position])
         holder.itemView.setOnClickListener {
-            listener()
+            listener(careerList[position])
         }
 
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                filteredList.clear()
+                careerList.forEach {
+                    if (it.career_title.startsWith(p0.toString())) {
+                        filteredList.add(it)
+                    }
+                }
+                val filterResults = FilterResults()
+                filterResults.values = filteredList
+                return filterResults
+            }
+
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                notifyDataSetChanged()
+            }
+
+        }
     }
 }

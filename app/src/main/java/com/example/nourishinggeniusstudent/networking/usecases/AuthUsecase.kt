@@ -34,4 +34,21 @@ class AuthUsecase(
 
             })
     }
+    fun loginUser(email: String, password: String) {
+        if (userData == null) return
+        Networking.with(context).getServices().login(
+            email = email.toRequestBody(),
+            password = password.toRequestBody(),
+        ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : CallbackObserver<BaseModel<User>>() {
+                override fun onSuccess(response: BaseModel<User>) {
+                    userData?.value = response.data
+                }
+
+                override fun onFailed(code: Int, message: String) {
+                    errorLiveData.value = message
+                }
+
+            })
+    }
 }

@@ -9,7 +9,7 @@ import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
 class SignupActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySignupBinding
-    private val viewModel by lazy { SignupViewModel(this@SignupActivity) }
+    private val viewModel by lazy { AuthViewModel(this@SignupActivity) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
