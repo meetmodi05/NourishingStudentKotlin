@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.nourishinggeniusstudent.databinding.ActivityLoginBinding
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
+import com.example.nourishinggeniusstudent.ui.view.blog.BlogViewModel
 import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
+import com.example.nourishinggeniusstudent.utils.Constants
 
 class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -20,6 +22,7 @@ class LoginActivity : BaseActivity() {
 
 
     }
+
 
     private fun setOnClickListeners() {
         binding.signUpBtn.setOnClickListener {
@@ -53,7 +56,7 @@ class LoginActivity : BaseActivity() {
         }
         viewModel.isLoading.value = true
         viewModel.loginUser(
-            binding.etEmail.text.toString().trim(), binding.etPassword.text.toString()
+            binding.etEmail.text.toString().trim().lowercase(), binding.etPassword.text.toString()
         )
     }
 }

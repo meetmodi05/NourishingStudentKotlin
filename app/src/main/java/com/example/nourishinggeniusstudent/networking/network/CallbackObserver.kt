@@ -42,7 +42,7 @@ abstract class CallbackObserver<T> : DisposableObserver<T>() {
     private fun getErrorMessage(responseBody: ResponseBody?): String {
         return try {
             val jsonObject = JSONObject(responseBody!!.string())
-            jsonObject.getString("Message")
+            jsonObject.getString("message")
         } catch (e: Exception) {
             e.message.toString()
         }

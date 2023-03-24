@@ -8,12 +8,13 @@ import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.ui.view.auth.LoginActivity
 import com.example.nourishinggeniusstudent.utils.Constants
 import com.example.nourishinggeniusstudent.utils.Session
+import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 
-class SessionInterceptor(val context: Context, var token: String?) : Interceptor {
+class SessionInterceptor(val context: Context) : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -23,8 +24,11 @@ class SessionInterceptor(val context: Context, var token: String?) : Interceptor
         val builder = original.newBuilder()
         builder.header("Accept", "application/json")
         if (session.isLoggedIn) {
-            builder.header("Authorization", "Bearer $token")
+//            builder.header("Authorization", "Bearer $token")
         }
+        builder.header(
+            "Authorization", Credentials.basic(Constants.BASIC_UNAME, Constants.BASIC_PWD)
+        )
         builder.method(original.method, original.body)
         val request = builder.build()
         val response = chain.proceed(request)
@@ -37,8 +41,10 @@ class SessionInterceptor(val context: Context, var token: String?) : Interceptor
                 val msg = jsonObject.optString("Message")
                 intent.putExtra(Constants.SESSION_EXPIRE_MSG, msg)
             } catch (e: Exception) {
-                intent.putExtra(Constants.SESSION_EXPIRE_MSG, /*"${e.message}"*/
-                    context.getString(R.string.session_expired))
+                intent.putExtra(
+                    Constants.SESSION_EXPIRE_MSG, /*"${e.message}"*/
+                    context.getString(R.string.session_expired)
+                )
             }
             if (session.isLoggedIn) {
                 session.logout()

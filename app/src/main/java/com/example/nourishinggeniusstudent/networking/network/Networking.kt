@@ -33,10 +33,7 @@ open class Networking(private val context: Context? = null) {
         httpClient.readTimeout(timeOutInMinutes, TimeUnit.MINUTES)
         httpClient.connectTimeout(timeOutInMinutes, TimeUnit.MINUTES)
 
-        //Authentication
-        if (session?.isLoggedIn!!) {
-            httpClient.interceptors().add(SessionInterceptor(context!!, session?.getToken()))
-        }
+        httpClient.addInterceptor(SessionInterceptor(context!!))
 
         //Log
         val logging = HttpLoggingInterceptor()
@@ -44,15 +41,11 @@ open class Networking(private val context: Context? = null) {
         httpClient.addInterceptor(logging)
 
         //GSON converter
-        val gson = GsonBuilder()
-            .registerTypeAdapterFactory(ItemTypeAdapterFactory())
-            .create()
+        val gson = GsonBuilder().registerTypeAdapterFactory(ItemTypeAdapterFactory()).create()
 
-        return retrofit2.Retrofit.Builder()
-            .baseUrl(baseURL)
+        return retrofit2.Retrofit.Builder().baseUrl(baseURL)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(httpClient.build())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).client(httpClient.build())
             .build().create(APIInterface::class.java)
     }
 }

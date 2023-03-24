@@ -15,12 +15,14 @@ import com.example.nourishinggeniusstudent.ui.adapter.*
 import com.example.nourishinggeniusstudent.ui.view.assessment.IdentifyGeniusActivity
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.blog.BlogActivity
+import com.example.nourishinggeniusstudent.ui.view.blog.BlogDetailsActivity
 import com.example.nourishinggeniusstudent.ui.view.career.CareerActivity
 import com.example.nourishinggeniusstudent.ui.view.career.DegreeList
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
 import com.example.nourishinggeniusstudent.ui.view.profile.ProfileActivity
 import com.example.nourishinggeniusstudent.ui.view.setting.SettingActivity
 import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingActivity
+import com.example.nourishinggeniusstudent.utils.Constants
 
 class DashBoardActivity : BaseActivity() {
     private lateinit var binding: ActivityDashBoardBinding
@@ -36,7 +38,8 @@ class DashBoardActivity : BaseActivity() {
             )
         }
         binding.llFirst.setOnClickListener {
-            val careerIntent = Intent(this, DegreeList::class.java)
+//            val careerIntent = Intent(this, DegreeList::class.java)
+            val careerIntent = Intent(this, CareerActivity::class.java)
             startActivity(careerIntent)
         }
         binding.secondLL2.setOnClickListener {
@@ -141,7 +144,11 @@ class DashBoardActivity : BaseActivity() {
             )
         )
         binding.mostPopularRV.layoutManager = LinearLayoutManager(this, VERTICAL, false)
-        binding.mostPopularRV.adapter = BlogAdapter(mostPopularList)
+        binding.mostPopularRV.adapter = BlogAdapter(mostPopularList){
+            val intent = Intent(this@DashBoardActivity, BlogDetailsActivity::class.java)
+            intent.putExtra(Constants.BLOG_ID, it.id)
+            startActivity(intent)
+        }
 
         binding.tvSeeAll.setOnClickListener {
             startActivity(

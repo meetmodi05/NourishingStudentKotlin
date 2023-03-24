@@ -7,7 +7,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="newsTxt">We’re continuously working to provide you with quality content. For more such\ncontent, subscribe to our newsletter.</string>
+    <string name="newsTxt">We’re continuously working to provide you with quality content. For more such content, subscribe to our newsletter.</string>
     <string name="careerTxt">Our quality of life depends mainly on 2 things, Career &amp; life partner. Probability of being happy in life after making t.....</string>
     <string name="careerHowTxt">It\'s very important to make a right choice in order to pursue excellence in your career, isn\'t it? So, then how you sele…</string>
     <string name="menu_home">Home</string>
@@ -150,4 +150,5 @@
     <string name="session_expired">Session Expired</string>
     <string name="arts">Arts</string>
     <string name="or_login_with">Login With</string>
+    <string name="logout">Logout</string>
 </resources>

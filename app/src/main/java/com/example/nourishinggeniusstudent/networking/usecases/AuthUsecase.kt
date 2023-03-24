@@ -16,11 +16,13 @@ class AuthUsecase(
     private var userData: MutableLiveData<User>? = null,
 ) {
 
-    fun registerUser(email: String, password: String) {
+    fun registerUser(name: String, email: String, password: String, contact: String) {
         if (userData == null) return
         Networking.with(context).getServices().register(
+            name = name.toRequestBody(),
             email = email.toRequestBody(),
             password = password.toRequestBody(),
+            contactNumber = contact.toRequestBody(),
             role = "student".toRequestBody()
         ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : CallbackObserver<BaseModel<User>>() {
@@ -34,6 +36,7 @@ class AuthUsecase(
 
             })
     }
+
     fun loginUser(email: String, password: String) {
         if (userData == null) return
         Networking.with(context).getServices().login(

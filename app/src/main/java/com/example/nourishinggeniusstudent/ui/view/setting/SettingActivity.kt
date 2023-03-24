@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivitySettingBinding
+import com.example.nourishinggeniusstudent.ui.view.auth.LoginActivity
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.profile.ProfileActivity
 import com.example.nourishinggeniusstudent.ui.view.subscription.EnrollmentActivity
@@ -38,6 +39,12 @@ class SettingActivity : BaseActivity() {
         }
         binding.innerSettingRl5.setOnClickListener {
             val feedbackIntent = Intent(this, FeedBack::class.java)
+            startActivity(feedbackIntent)
+        }
+        binding.innerSettingRl6.setOnClickListener {
+            session?.logout()
+            val feedbackIntent = Intent(this, LoginActivity::class.java)
+            feedbackIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(feedbackIntent)
         }
     }

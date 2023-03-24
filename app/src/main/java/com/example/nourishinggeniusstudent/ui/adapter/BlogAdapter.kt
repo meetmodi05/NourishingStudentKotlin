@@ -12,7 +12,8 @@ import com.example.nourishinggeniusstudent.databinding.MostPopularLayoutBinding
 import com.example.nourishinggeniusstudent.model.data.BlogDataModel
 import com.example.nourishinggeniusstudent.model.data.BlogModel
 
-class BlogAdapter( private val blogList: ArrayList<BlogDataModel>
+class BlogAdapter(
+    private val blogList: ArrayList<BlogDataModel>, private val listener: (BlogDataModel) -> Unit
 ) : Adapter<BlogAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,6 +30,9 @@ class BlogAdapter( private val blogList: ArrayList<BlogDataModel>
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(blogList[position])
+        holder.binding.root.setOnClickListener {
+            listener(blogList[position])
+        }
     }
 
     class MyViewHolder(val mContext: Context, var binding: MostPopularLayoutBinding) :

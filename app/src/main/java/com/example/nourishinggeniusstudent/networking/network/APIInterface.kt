@@ -15,8 +15,10 @@ interface APIInterface {
     @Multipart
     @POST("auth/register")
     fun register(
+        @Part("name") name: RequestBody,
         @Part("email_address") email: RequestBody,
         @Part("password") password: RequestBody,
+        @Part("contact_number") contactNumber: RequestBody,
         @Part("role") role: RequestBody,
     ): Observable<BaseModel<User>>
 

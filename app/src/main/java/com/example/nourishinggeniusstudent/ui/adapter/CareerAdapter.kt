@@ -23,11 +23,7 @@ class CareerAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: Careers) {
             binding.tvTitle3.text = blog.career_title
-            Glide.with(mContext).load(blog.career_logo).override(512, 312).placeholder(
-                ContextCompat.getDrawable(
-                    mContext, R.drawable.ic_career
-                )
-            ).override(512, 312).into(binding.img1)
+            Glide.with(mContext).load(blog.career_logo).override(512, 312).into(binding.img1)
         }
     }
 

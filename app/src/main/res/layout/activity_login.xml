@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/enter_email_address"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>

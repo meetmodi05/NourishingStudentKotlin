@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.example.nourishinggeniusstudent.databinding.ActivitySignupBinding
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
+import com.example.nourishinggeniusstudent.utils.isEmail
+import com.example.nourishinggeniusstudent.utils.isPhone
 
 class SignupActivity : BaseActivity() {
 
@@ -21,8 +23,10 @@ class SignupActivity : BaseActivity() {
             if (validate()) {
                 viewModel.isLoading.value = true
                 viewModel.registerUser(
-                    binding.etStudentEmail.text.toString().trim(),
-                    binding.etStudentPassword.text.toString().trim()
+                    binding.etStudentName.text.toString().trim(),
+                    binding.etStudentEmail.text.toString().trim().lowercase(),
+                    binding.etStudentPassword.text.toString().trim(),
+                    binding.etStudentContact.text.toString()
                 )
             }
         }
@@ -47,12 +51,20 @@ class SignupActivity : BaseActivity() {
             binding.etStudentEmail.error = "Email is Required"
             return false
         }
+        if (!binding.etStudentEmail.text.toString().trim().isEmail()) {
+            binding.etStudentEmail.error = "Invalid Email"
+            return false
+        }
         if (binding.etStudentPassword.length() == 0) {
             binding.etStudentPassword.error = "Password is Required"
             return false
         }
         if (binding.etStudentContact.length() == 0) {
             binding.etStudentContact.error = "Contact is Required"
+            return false
+        }
+        if (!binding.etStudentContact.text.toString().isPhone()) {
+            binding.etStudentContact.error = "Invalid Contact"
             return false
         }
         if (binding.etStudentConfirmPassword.length() == 0) {

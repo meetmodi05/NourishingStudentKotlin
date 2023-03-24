@@ -38,27 +38,27 @@ class CareerInfo : BaseActivity() {
         details?.apply {
             Glide.with(this@CareerInfo).load(careerLogo).into(binding.ivCareer)
             binding.tvCareerTitle.text = careerTitle
-            binding.layoutImpact.tvTitle.text = impactTitle
+            binding.layoutImpact.tvTitle.text = getString(R.string.impact)
             binding.layoutImpact.tvDetails.text =
                 Html.fromHtml(careerImact, HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.layoutSpecialization.tvTitle.text = getString(R.string.specialization)
             binding.layoutSpecialization.tvDetails.text =
                 Html.fromHtml(careerSpecialization, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.layoutCareerPaths.tvTitle.text = pathTitle
+            binding.layoutCareerPaths.tvTitle.text = getString(R.string.career_paths)
             binding.layoutCareerPaths.tvDetails.text =
                 Html.fromHtml(careerPaths, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.layoutAdvantages.tvTitle.text = advantagesDisadvantagesTitle
+            binding.layoutAdvantages.tvTitle.text = getString(R.string.adv_dis)
             binding.layoutAdvantages.tvDetails.text =
                 Html.fromHtml(careerAdvantagesAndDisadvantages, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.layoutWork.tvTitle.text = workTitle
+            binding.layoutWork.tvTitle.text = getString(R.string.work)
             binding.layoutWork.tvDetails.text =
                 Html.fromHtml(careerWork, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.layoutWorkLife.tvTitle.text = workLifeBalanceTitle
+            binding.layoutWorkLife.tvTitle.text = getString(R.string.work_lifeB)
             binding.layoutWorkLife.tvDetails.text = getString(R.string.lorem_ipsum)
             binding.layoutInvestment.tvTitle.text = getString(R.string.inv)
             binding.layoutInvestment.tvDetails.text =
                 Html.fromHtml(careerInvestmentEarningPotential, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.layoutStrWeak.tvTitle.text = careerStrengthAndWeaknessesTitle
+            binding.layoutStrWeak.tvTitle.text = getString(R.string.str_weak)
             binding.layoutStrWeak.tvDetails.text =
                 Html.fromHtml(careerStrengthAndWeaknesses, HtmlCompat.FROM_HTML_MODE_LEGACY)
         }

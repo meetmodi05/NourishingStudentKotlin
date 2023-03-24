@@ -12,7 +12,9 @@ class AuthViewModel(mContext: Context) : BaseViewModel(mContext) {
 
     val usecase = AuthUsecase(mContext, errorLiveData, userData)
 
-    fun registerUser(email: String, password: String) = usecase.registerUser(email, password)
+    fun registerUser(name: String, email: String, password: String, contact: String) =
+        usecase.registerUser(name, email, password, contact)
+
     fun loginUser(email: String, password: String) = usecase.loginUser(email, password)
 
 }

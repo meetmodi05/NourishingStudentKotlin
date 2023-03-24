@@ -1,5 +1,6 @@
 package com.example.nourishinggeniusstudent.ui.view.blog
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import com.example.nourishinggeniusstudent.databinding.ActivityBlogBinding
 import com.example.nourishinggeniusstudent.model.data.BlogDataModel
 import com.example.nourishinggeniusstudent.model.data.BlogModel
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
+import com.example.nourishinggeniusstudent.utils.Constants
 
 class BlogActivity : BaseActivity() {
     private lateinit var binding: ActivityBlogBinding
@@ -52,7 +54,11 @@ class BlogActivity : BaseActivity() {
     }
 
     fun setAdapter(blogList: ArrayList<BlogDataModel>) {
-        binding.rvBLogList.adapter = BlogAdapter(blogList)
+        binding.rvBLogList.adapter = BlogAdapter(blogList) {
+            val intent = Intent(this@BlogActivity, BlogDetailsActivity::class.java)
+            intent.putExtra(Constants.BLOG_ID, it.id)
+            startActivity(intent)
+        }
     }
 
 }
