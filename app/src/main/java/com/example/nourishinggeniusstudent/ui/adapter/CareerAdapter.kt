@@ -35,13 +35,13 @@ class CareerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return careerList.size
+        return filteredList.size
     }
 
     override fun onBindViewHolder(holder: MyView, position: Int) {
-        holder.binding(careerList[position])
+        holder.binding(filteredList[position])
         holder.itemView.setOnClickListener {
-            listener(careerList[position])
+            listener(filteredList[position])
         }
 
     }
@@ -51,7 +51,7 @@ class CareerAdapter(
             override fun performFiltering(p0: CharSequence?): FilterResults {
                 filteredList.clear()
                 careerList.forEach {
-                    if (it.career_title.startsWith(p0.toString())) {
+                    if (it.career_title.lowercase().startsWith(p0.toString().lowercase())) {
                         filteredList.add(it)
                     }
                 }

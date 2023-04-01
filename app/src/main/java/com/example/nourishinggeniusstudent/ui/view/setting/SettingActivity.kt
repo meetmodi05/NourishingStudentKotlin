@@ -18,6 +18,8 @@ class SettingActivity : BaseActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUserData()
+
         binding.crossIcon.setOnClickListener { finish() }
         binding.profileIcon.setOnClickListener {
             val profileIntent = Intent(this, ProfileActivity::class.java)
@@ -47,5 +49,14 @@ class SettingActivity : BaseActivity() {
             feedbackIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(feedbackIntent)
         }
+    }
+
+    private fun setUserData() {
+        binding.tvUserName.text = session?.user?.name
+        Glide.with(this).load(
+            if (session?.user?.profilePic.isNullOrBlank()) {
+                session?.user?.profilePic
+            } else R.drawable.img_student
+        ).centerCrop().into(binding.profileIcon)
     }
 }

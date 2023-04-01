@@ -7,6 +7,7 @@ import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
 import com.example.nourishinggeniusstudent.utils.isEmail
 import com.example.nourishinggeniusstudent.utils.isPhone
+import com.example.nourishinggeniusstudent.utils.isValidPassword
 
 class SignupActivity : BaseActivity() {
 
@@ -55,7 +56,7 @@ class SignupActivity : BaseActivity() {
             binding.etStudentEmail.error = "Invalid Email"
             return false
         }
-        if (binding.etStudentPassword.length() == 0) {
+        if (!binding.etStudentPassword.text.toString().isValidPassword()) {
             binding.etStudentPassword.error = "Password is Required"
             return false
         }
@@ -67,7 +68,7 @@ class SignupActivity : BaseActivity() {
             binding.etStudentContact.error = "Invalid Contact"
             return false
         }
-        if (binding.etStudentConfirmPassword.length() == 0) {
+        if (binding.etStudentConfirmPassword.text.isNullOrBlank()) {
             binding.etStudentConfirmPassword.error = "Confirm Password is Required"
             return false
         }

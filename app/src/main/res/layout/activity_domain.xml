@@ -42,11 +42,13 @@
         app:hintEnabled="false">
 
         <AutoCompleteTextView
-            android:id="@+id/autoCompleteTV_Blog"
+            android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="@string/search_among_4_domain_experts"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="10dp"
+            android:hint="@string/search"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:padding="10dp" />
@@ -60,10 +62,10 @@
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/autoCompleteTV"
-            android:layout_width="280dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="Choose Domain"
+            android:hint="Filter"
             android:inputType="none"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>

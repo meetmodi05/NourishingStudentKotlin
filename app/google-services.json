@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "841455283152",
+    "project_id": "nourishing-genius",
+    "storage_bucket": "nourishing-genius.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841455283152:android:d4a9f3033c1a3fb15627d5",
+        "android_client_info": {
+          "package_name": "com.example.nourishinggeniusstudent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841455283152-1qa36vtd9ltv8sd878ve9228vvjun5fo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nourishinggeniusstudent",
+            "certificate_hash": "d1ee28e6c16c48a6ec7d27129677054015ba5de5"
+          }
+        },
+        {
+          "client_id": "841455283152-17cqj307464kja45q5ddvtpt1df01mhf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe6A569OuyBd33Z7sGdMof3NpizlTqZr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841455283152-17cqj307464kja45q5ddvtpt1df01mhf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

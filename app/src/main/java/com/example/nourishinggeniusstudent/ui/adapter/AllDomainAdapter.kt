@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.nourishinggeniusstudent.databinding.RvDomainAllLayoutBinding
+import com.example.nourishinggeniusstudent.databinding.ItemExpertsBinding
 import com.example.nourishinggeniusstudent.model.data.TopExpertModel
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
 
 class AllDomainAdapter(
-    private val domainActivity: DomainActivity, private val topExpertList: ArrayList<TopExpertModel>
+    private val topExpertList: ArrayList<TopExpertModel>
 ) : RecyclerView.Adapter<AllDomainAdapter.ViewHolder>() {
-    class ViewHolder(val binding: RvDomainAllLayoutBinding) :
+    class ViewHolder(val binding: ItemExpertsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(topExpertModel: TopExpertModel) {
             binding.allDomainImg1.setImageResource(topExpertModel.img!!)
@@ -25,7 +25,7 @@ class AllDomainAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            RvDomainAllLayoutBinding.inflate(
+            ItemExpertsBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )

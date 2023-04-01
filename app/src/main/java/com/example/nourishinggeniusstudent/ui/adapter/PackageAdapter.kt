@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvpackageslayoutBinding
+import com.example.nourishinggeniusstudent.model.data.Packages
 import com.example.nourishinggeniusstudent.model.data.PackagesModel
 import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingActivity
 
 class PackageAdapter(
-    private val context: Context, private val packageList: ArrayList<PackagesModel>
+    private val context: Context, private val packageList: ArrayList<Packages>
 ) : Adapter<PackageAdapter.ViewHolder>() {
     class ViewHolder(var binding: RvpackageslayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun binding(blog: PackagesModel) {
-
-            binding.tvDescription.text = blog.description
-            binding.careerSelection.text = blog.title
-            binding.tvSubTitle.text = blog.subTitle
+        fun binding(data: Packages) {
+            binding.tvDescription.text = data.packageContent
+            binding.careerSelection.text = "${data.packageTitle}\n${data.packageCost}"
+            binding.btnBuyNow.text = data.buttonText
         }
 
     }
@@ -25,9 +25,7 @@ class PackageAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             RvpackageslayoutBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }

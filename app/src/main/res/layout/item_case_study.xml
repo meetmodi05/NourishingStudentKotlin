@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@drawable/img_bg"
@@ -22,23 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingHorizontal="15dp"
-
         android:text="@string/law"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
+        android:layout_marginBottom="10dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/all_domain_tv_designation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingHorizontal="15dp"
-        android:paddingBottom="10dp"
-        android:text="Entrepreneur"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>

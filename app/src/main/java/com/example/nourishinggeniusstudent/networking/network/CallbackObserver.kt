@@ -20,7 +20,7 @@ abstract class CallbackObserver<T> : DisposableObserver<T>() {
 
     override fun onNext(t: T) {
         val obj = t as BaseModel<Any?>
-        if (t.status == 200) {
+        if (t.status == 200 || t.status == 202) {
             onSuccess(t)
         } else {
             onFailed(0, t.message)

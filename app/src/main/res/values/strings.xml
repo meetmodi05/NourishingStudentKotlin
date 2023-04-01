@@ -22,7 +22,7 @@
     <string name="hi">Hi ! 🙋🏻‍♂️</string>
     <string name="welcome_to_nourishing_genius">Welcome to Nourishing Genius.</string>
     <string name="domain_expert">Domain Expert</string>
-    <string name="search_among_4_domain_experts">Search among 4 Domain Experts</string>
+    <string name="search">Search</string>
     <string name="todo">TODO</string>
     <string name="career_info">Career Info</string>
     <string name="law">Law</string>
@@ -58,7 +58,7 @@
     <string name="profile_name">Name</string>
     <string name="profile_email">Email</string>
     <string name="profile_gender">Gender</string>
-    <string name="profile_age">Age</string>
+    <string name="profile_age">Date of Birth</string>
     <string name="profile_location">Location</string>
     <string name="enter_name_here">Enter Name here…</string>
     <string name="delete_acc_txt">Delete Account</string>
@@ -76,10 +76,10 @@
     <string name="domain_experts">Domain Experts</string>
     <string name="case_studies">Case Studies</string>
     <string name="setting">Setting</string>
-    <string name="enter_email_here">Enter Email here…</string>
-    <string name="enter_gender_here">Enter Gender Here…</string>
-    <string name="enter_age_here">Enter Age Here…</string>
-    <string name="enter_location_here">Enter Location here…</string>
+    <string name="enter_email_here">Enter Email</string>
+    <string name="enter_gender_here">Enter Gender</string>
+    <string name="enter_age_here">Select your Date of Birth</string>
+    <string name="enter_location_here">Enter Address</string>
     <string name="login">Login</string>
 
 
@@ -124,6 +124,7 @@
     <string name="enter_name_of_student">Enter Name of Student</string>
     <string name="enter_email_address_of_student">Enter Email address of student</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="reset_password">Reset Password</string>
     <string name="forgot_password2"><b>Forgot Password ?</b></string>
     <string name="click_here"><u>Click Here</u></string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
@@ -151,4 +152,9 @@
     <string name="arts">Arts</string>
     <string name="or_login_with">Login With</string>
     <string name="logout">Logout</string>
+    <string name="verify">Verify</string>
+    <string name="confirm_your_password_hint">Confirm your password</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_changes">Save Changes</string>
 </resources>

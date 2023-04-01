@@ -60,6 +60,15 @@
             android:name=".ui.view.blog.BlogActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.view.caseStudy.CaseStudyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.caseStudy.CaseStudyDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.caseStudy.DomainDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.career.CareerActivity"
             android:exported="false" />
         <activity

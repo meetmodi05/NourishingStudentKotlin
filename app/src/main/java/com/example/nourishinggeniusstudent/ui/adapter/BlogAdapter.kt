@@ -38,11 +38,11 @@ class BlogAdapter(
     class MyViewHolder(val mContext: Context, var binding: MostPopularLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(blog: BlogDataModel) {
-            Glide.with(mContext).load(blog.postImageUrl).placeholder(
+            Glide.with(mContext).load(blog.postImageUrl).centerCrop().placeholder(
                 ContextCompat.getDrawable(
                     mContext, R.drawable.img_1
                 )
-            ).into(binding.imageView)
+            ).centerCrop().into(binding.imageView)
             binding.tvMiniTitle.text = blog.postName
 //            binding.tvDescription.text = blog.description
         }

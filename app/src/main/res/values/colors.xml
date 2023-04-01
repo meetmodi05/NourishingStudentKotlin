@@ -24,6 +24,7 @@
     <color name="orange2">#FFCA80</color>
     <color name="black2">#07090A</color>
     <color name="bg_grey">#5B718096</color>
+    <color name="bg_grey_light">#9EDCE4EF</color>
     <color name="bg_transparent">#00FFFFFF</color>
     <color name="bg_transparent_20">#33FAFBFD</color>
     <color name="bg_transparent_40">#66F3F6FA</color>
@@ -31,5 +32,6 @@
     <color name="sub_grey2">#F0F0F0</color>
     <color name="light_red">#FFA1A1</color>
     <color name="red">#FF5050</color>
+    <color name="dark_red">#B0F61111</color>
     <color name="light_green">#0AE596</color>
 </resources>

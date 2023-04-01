@@ -52,6 +52,7 @@
                 android:src="@drawable/person_outline_white_small" />
 
             <TextView
+                android:id="@+id/tvUserName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"

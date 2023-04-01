@@ -6,31 +6,82 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardBinding
-import com.example.nourishinggeniusstudent.model.data.*
+import com.example.nourishinggeniusstudent.model.response.DashboardResponseModel
 import com.example.nourishinggeniusstudent.ui.adapter.*
+import com.example.nourishinggeniusstudent.ui.view.caseStudy.CaseStudyActivity
 import com.example.nourishinggeniusstudent.ui.view.assessment.IdentifyGeniusActivity
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.blog.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.blog.BlogDetailsActivity
 import com.example.nourishinggeniusstudent.ui.view.career.CareerActivity
-import com.example.nourishinggeniusstudent.ui.view.career.DegreeList
+import com.example.nourishinggeniusstudent.ui.view.caseStudy.CaseStudyViewModel
+import com.example.nourishinggeniusstudent.ui.view.caseStudy.DomainDetailsActivity
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
+import com.example.nourishinggeniusstudent.ui.view.domain.DomainViewModel
 import com.example.nourishinggeniusstudent.ui.view.profile.ProfileActivity
 import com.example.nourishinggeniusstudent.ui.view.setting.SettingActivity
 import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingActivity
 import com.example.nourishinggeniusstudent.utils.Constants
+import com.example.nourishinggeniusstudent.utils.isEmail
+import com.example.nourishinggeniusstudent.utils.showToast
 
 class DashBoardActivity : BaseActivity() {
     private lateinit var binding: ActivityDashBoardBinding
+    private val viewModel by lazy { DashboardViewModel(this) }
+    private val caseStudyViewModel by lazy { CaseStudyViewModel(this) }
+    private val domainViewModel by lazy { DomainViewModel(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.isLoading.value = true
+        viewModel.getDashboardData()
+        setClickListeners()
+        setObservers()
+    }
 
+    private fun setObservers() {
+        viewModel.dashboardData.observe(this) {
+            setAdapters(it)
+            viewModel.isLoading.value = false
+        }
+        viewModel.subscribeToNewsletter.observe(this) {
+            showToast(it)
+            binding.mailET.setText("")
+        }
+    }
+
+    private fun setAdapters(model: DashboardResponseModel) {
+        binding.mostPopularRV.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+        binding.mostPopularRV.adapter = model.dataPost?.defaultPosts?.let {
+            BlogAdapter(it) { data ->
+                val intent = Intent(this@DashBoardActivity, BlogDetailsActivity::class.java)
+                intent.putExtra(Constants.BLOG_ID, data.id)
+                startActivity(intent)
+            }
+        }
+
+        binding.rvTopExpert.layoutManager = GridLayoutManager(this, 2)
+        val domainAdapter = DomainAdapter {
+            val intent = Intent(this@DashBoardActivity, DomainDetailsActivity::class.java)
+            intent.putExtra(Constants.CASE_STUDY_ID, it.id)
+            startActivity(intent)
+        }
+        model.dataDexperts?.dexpertsPosts?.let { domainAdapter.setList(it) }
+        binding.rvTopExpert.adapter = domainAdapter
+
+        binding.rvSuccess.layoutManager = GridLayoutManager(this, 2)
+        val caseStudyAdapter = CaseStudyAdapter {
+            val intent = Intent(this@DashBoardActivity, CaseStudyActivity::class.java)
+            intent.putExtra(Constants.CASE_STUDY_ID, it.id)
+            startActivity(intent)
+        }
+        model.dataCareers?.casestudysPosts?.let { caseStudyAdapter.setList(it) }
+        binding.rvSuccess.adapter = caseStudyAdapter
+    }
+
+    private fun setClickListeners() {
         binding.ivMenuIcon.setOnClickListener { binding.dr1.openDrawer(GravityCompat.START) }
         binding.customLayouts.ivClose.setOnClickListener {
             binding.dr1.closeDrawer(
@@ -79,75 +130,12 @@ class DashBoardActivity : BaseActivity() {
             startActivity(domainIntent)
         }
         binding.customLayouts.caseStudiesTvCl.setOnClickListener {
-            val caseStudiesIntent = Intent(this, DomainActivity::class.java)
+            val caseStudiesIntent = Intent(this, CaseStudyActivity::class.java)
             startActivity(caseStudiesIntent)
         }
         binding.customLayouts.settingTvCl.setOnClickListener {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
-        }
-
-        //Blogs RecyclerView
-        val blogList = arrayListOf<BlogModel>()
-        blogList.add(BlogModel(R.drawable.insert_chart, "Careers"))
-        blogList.add(BlogModel(R.drawable.round_person_24, "Discipline"))
-        blogList.add(BlogModel(R.drawable.assignment_white, "Self\nAssessment"))
-        blogList.add(BlogModel(R.drawable.policy, "Self\nProductivity"))
-
-        binding.rvBlog.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvBlog.adapter = RvBlogAdapter(this, blogList)
-
-        //Domain Expert RecyclerView
-        val domainExpertList = arrayListOf<DomainModel>()
-        domainExpertList.add(DomainModel(R.drawable.suit_icon_vector, "Entrepreneur"))
-        domainExpertList.add(DomainModel(R.drawable.law_icon, "Lawyer"))
-        domainExpertList.add(DomainModel(R.drawable.microsscope, "Scientist"))
-        domainExpertList.add(DomainModel(R.drawable.engineering, "Engineer"))
-
-        binding.rvDomain.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvDomain.adapter = DomainAdapter(this, domainExpertList)
-
-        //Top Expert Recycler
-        val topExpertList = arrayListOf<TopExpertModel>()
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Kunal Shah", "Entrepreneur"))
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Akshat Dave", "Entrepreneur"))
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Jay Dosi", "Entrepreneur"))
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Rahul Patel", "Entrepreneur"))
-
-        binding.rvTopExpert.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.rvTopExpert.adapter = TopExpertAdapter(this, topExpertList)
-
-        binding.rvCaseStudies.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvCaseStudies.adapter = DomainAdapter(this, domainExpertList)
-
-        //Successful Model Recycler
-        val successfulList = arrayListOf<SuccessfulModel>()
-        successfulList.add(SuccessfulModel(R.drawable.person_outline_white, "Ratan Tata"))
-        successfulList.add(SuccessfulModel(R.drawable.person_outline_white, "Dr.APJ Abdul\nKalam"))
-        successfulList.add(SuccessfulModel(R.drawable.person_outline_white, "Ram\nJethmalai"))
-        successfulList.add(SuccessfulModel(R.drawable.person_outline_white, "Ramanujan"))
-
-        binding.rvSuccess.layoutManager = GridLayoutManager(this, 2)
-        binding.rvSuccess.adapter = SuccessfulAdapter(this, successfulList)
-
-        val mostPopularList = arrayListOf<BlogDataModel>()
-
-        mostPopularList.add(
-            BlogDataModel(
-                0, getString(R.string.why_is_career_guidence_important), ""
-            )
-        )
-        mostPopularList.add(
-            BlogDataModel(
-                0, getString(R.string.why_is_career_guidence_important), ""
-            )
-        )
-        binding.mostPopularRV.layoutManager = LinearLayoutManager(this, VERTICAL, false)
-        binding.mostPopularRV.adapter = BlogAdapter(mostPopularList){
-            val intent = Intent(this@DashBoardActivity, BlogDetailsActivity::class.java)
-            intent.putExtra(Constants.BLOG_ID, it.id)
-            startActivity(intent)
         }
 
         binding.tvSeeAll.setOnClickListener {
@@ -167,9 +155,17 @@ class DashBoardActivity : BaseActivity() {
         binding.tvExplore.setOnClickListener {
             startActivity(
                 Intent(
-                    this, DomainActivity::class.java
+                    this, CaseStudyActivity::class.java
                 )
             )
+        }
+        binding.tvSubscribe.setOnClickListener {
+            if (!binding.mailET.text.toString().isEmail()) {
+                binding.mailET.error = "Invalid Email"
+                return@setOnClickListener
+            }
+            viewModel.isLoading.value = true
+            viewModel.subscribeToNewsletter(binding.mailET.text.toString())
         }
     }
 }

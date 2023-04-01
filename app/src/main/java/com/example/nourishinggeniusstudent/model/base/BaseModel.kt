@@ -9,7 +9,7 @@ open class BaseModel<T> : Serializable {
     var message: String = ""
 
     @SerializedName("status")
-    var status: Int? = null
+    var status: Int = 200
 
     @SerializedName("data")
     var data: T? = null

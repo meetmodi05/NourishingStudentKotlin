@@ -6,18 +6,29 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.RvDomainLayoutBinding
+import com.example.nourishinggeniusstudent.model.casestudy.CaseStudyData
 import com.example.nourishinggeniusstudent.model.data.DomainModel
+import com.example.nourishinggeniusstudent.model.domain.DomainData
 import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
 
 class DomainAdapter(
-    private val context : Context,
-    private val domainExpertList: ArrayList<DomainModel>
+    private val listener: (DomainData) -> Unit
 ) : Adapter<DomainAdapter.DomainHolder>() {
+
+    private val domainExpertList: ArrayList<DomainData> = arrayListOf()
+
+    fun setList(list: List<DomainData>) {
+        domainExpertList.clear()
+        domainExpertList.addAll(list)
+        notifyDataSetChanged()
+    }
     class DomainHolder(var binding: RvDomainLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun binding(model: DomainModel) {
-            binding.domainImg1.setImageResource(model.img!!)
+        fun binding(model: DomainData) {
+            Glide.with(binding.domainImg1).load(model.featureUri).override(525, 325)
+                .into(binding.domainImg1)
             binding.domainTvTitle.text = model.title
         }
     }
@@ -35,8 +46,7 @@ class DomainAdapter(
     override fun onBindViewHolder(holder: DomainHolder, position: Int) {
         holder.binding(domainExpertList[position])
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, DomainActivity::class.java)
-            context.startActivity(intent)
+            listener(domainExpertList[position])
         }
     }
 }

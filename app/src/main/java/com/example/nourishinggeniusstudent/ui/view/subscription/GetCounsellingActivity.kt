@@ -10,30 +10,32 @@ import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 
 class GetCounsellingActivity : BaseActivity() {
     private lateinit var binding: ActivityGetCounsellingBinding
+    private val viewModel by lazy { SubscriptionViewModel(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGetCounsellingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.backAeroIcon.setOnClickListener { finish() }
-
-        val packageList = arrayListOf<PackagesModel>()
-        packageList.add(
-            PackagesModel(
-                getString(R.string.career_selection_nrs_3999),
-                getString(R.string.psychometric_assessment_report),
-                getString(R.string._2_counseling_1_to_1_sessions_with_career_counselor)
-            )
-        )
-        packageList.add(
-            PackagesModel(
-                getString(R.string.career_selection_nrs_3999),
-                getString(R.string.psychometric_assessment_report),
-                getString(R.string._2_counseling_1_to_1_sessions_with_career_counselor)
-            )
-        )
-
-        binding.rvPackages.layoutManager = LinearLayoutManager(this)
-        binding.rvPackages.adapter = PackageAdapter(this, packageList)
+        viewModel.isLoading.value = true
+        initView()
+        setClickListners()
+        setObservers()
     }
+
+    private fun setClickListners() {
+        binding.backAeroIcon.setOnClickListener { finish() }
+    }
+
+    private fun setObservers() {
+        viewModel.packages.observe(this) {
+            binding.rvPackages.layoutManager = LinearLayoutManager(this)
+            binding.rvPackages.adapter = PackageAdapter(this, it.packagesPosts)
+            viewModel.isLoading.value = false
+        }
+    }
+
+    private fun initView() {
+        viewModel.getSubscriptionPackages()
+    }
+
+
 }
