@@ -1,7 +1,8 @@
 package com.example.nourishinggeniusstudent.ui.view.Career
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.nourishinggeniusstudent.databinding.ActivityCareerInfoBinding
 
 class CareerInfo : AppCompatActivity() {
@@ -12,6 +13,7 @@ class CareerInfo : AppCompatActivity() {
 
         setContentView(binding.root)
         binding.backAeroIcon.setOnClickListener { finish() }
+
 
     }
 }

@@ -7,22 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.CareerLayoutBinding
-import com.example.nourishinggeniusstudent.model.CareerModel
-import com.example.nourishinggeniusstudent.ui.view.Career.CareerActivity
+import com.example.nourishinggeniusstudent.model.CareerPost
 import com.example.nourishinggeniusstudent.ui.view.Career.CareerInfo
+import com.example.nourishinggeniusstudent.ui.viewModel.Career.CareerViewModel
 
 class CareerAdapter(
-    private val context: CareerActivity,
-    private val careerList: ArrayList<CareerModel>
+    private val list: MutableList<CareerPost>
 ) : Adapter<CareerAdapter.MyView>() {
-    inner class MyView(var binding: CareerLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun binding(blog: CareerModel) {
-            binding.img1.setImageResource(blog.img!!)
-            binding.tvTitle3.text = blog.title
-            Glide.with(binding.img1).load(blog.img).override(512, 312).into(binding.img1)
-
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyView {
         return MyView(
@@ -31,15 +22,23 @@ class CareerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return careerList.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: MyView, position: Int) {
-        holder.binding(careerList[position])
+        val cPost = CareerPost()
+        holder.binding(list[position])
+        Glide.with(holder.binding.img1.context).load(list[position].img).override(312, 312)
+            .into(holder.binding.img1)
         holder.itemView.setOnClickListener {
-            val careerInfoIntent = Intent(context, CareerInfo::class.java)
-            context.startActivity(careerInfoIntent)
+            val intent = Intent(holder.itemView.context, CareerInfo::class.java)
+            holder.itemView.context.startActivity(intent)
         }
+    }
 
+    inner class MyView(var binding: CareerLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun binding(item: CareerPost) {
+            binding.tvTitle.text = item.careerTitle
+        }
     }
 }
