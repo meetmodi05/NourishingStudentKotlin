@@ -21,12 +21,10 @@ class SettingActivity : BaseActivity() {
         setUserData()
 
         binding.crossIcon.setOnClickListener { finish() }
-        binding.profileIcon.setOnClickListener {
+        binding.rl1.setOnClickListener {
             val profileIntent = Intent(this, ProfileActivity::class.java)
             startActivity(profileIntent)
         }
-        Glide.with(this).load(getDrawable(R.drawable.img_dummy)).centerCrop().circleCrop()
-            .into(binding.profileIcon)
         binding.innerSettingRl1.setOnClickListener {
             val counsellingIntent = Intent(this, GetCounsellingActivity::class.java)
             startActivity(counsellingIntent)
@@ -57,6 +55,7 @@ class SettingActivity : BaseActivity() {
             if (session?.user?.profilePic.isNullOrBlank()) {
                 session?.user?.profilePic
             } else R.drawable.img_student
-        ).centerCrop().into(binding.profileIcon)
+        ).centerCrop().circleCrop().placeholder(getDrawable(R.drawable.img_student)).centerCrop()
+            .circleCrop().into(binding.profileIcon)
     }
 }

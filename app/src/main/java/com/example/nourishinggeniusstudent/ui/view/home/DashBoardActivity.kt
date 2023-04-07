@@ -6,6 +6,8 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import com.bumptech.glide.Glide
+import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardBinding
 import com.example.nourishinggeniusstudent.model.response.DashboardResponseModel
 import com.example.nourishinggeniusstudent.ui.adapter.*
@@ -39,6 +41,12 @@ class DashBoardActivity : BaseActivity() {
         viewModel.getDashboardData()
         setClickListeners()
         setObservers()
+        Glide.with(this).load(
+            if (session?.user?.profilePic.isNullOrBlank()) {
+                session?.user?.profilePic
+            } else R.drawable.round_person_28
+        ).centerCrop().placeholder(getDrawable(R.drawable.round_person_28)).centerCrop()
+            .into(binding.ivPersonIcon)
     }
 
     private fun setObservers() {
@@ -105,35 +113,35 @@ class DashBoardActivity : BaseActivity() {
             val profileIntent = Intent(this, ProfileActivity::class.java)
             startActivity(profileIntent)
         }
-        binding.customLayouts.homeTvCl.setOnClickListener {
+        binding.customLayouts.innerLl1.setOnClickListener {
             val homeIntent = Intent(this, DashBoardActivity::class.java)
             startActivity(homeIntent)
         }
-        binding.customLayouts.careersTvCl.setOnClickListener {
+        binding.customLayouts.innerLl2.setOnClickListener {
             val careerIntent = Intent(this, CareerActivity::class.java)
             startActivity(careerIntent)
         }
-        binding.customLayouts.reportsTvCl.setOnClickListener {
+        binding.customLayouts.innerLl3.setOnClickListener {
             val reportIntent = Intent(this, IdentifyGeniusActivity::class.java)
             startActivity(reportIntent)
         }
-        binding.customLayouts.counselingTvCl.setOnClickListener {
+        binding.customLayouts.innerLl4.setOnClickListener {
             val counsellingIntent = Intent(this, GetCounsellingActivity::class.java)
             startActivity(counsellingIntent)
         }
-        binding.customLayouts.blogsTvCl.setOnClickListener {
+        binding.customLayouts.innerLl5.setOnClickListener {
             val blogIntent = Intent(this, BlogActivity::class.java)
             startActivity(blogIntent)
         }
-        binding.customLayouts.dExpertTvCl.setOnClickListener {
+        binding.customLayouts.innerLl6.setOnClickListener {
             val domainIntent = Intent(this, DomainActivity::class.java)
             startActivity(domainIntent)
         }
-        binding.customLayouts.caseStudiesTvCl.setOnClickListener {
+        binding.customLayouts.innerLl7.setOnClickListener {
             val caseStudiesIntent = Intent(this, CaseStudyActivity::class.java)
             startActivity(caseStudiesIntent)
         }
-        binding.customLayouts.settingTvCl.setOnClickListener {
+        binding.customLayouts.innerLl9.setOnClickListener {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
         }

@@ -57,7 +57,7 @@ class ProfileActivity : BaseActivity() {
             } else if (user?.profilePic.isNullOrBlank()) {
                 user?.profilePic
             } else R.drawable.img_student
-        ).centerCrop().into(binding.imageUploader)
+        ).centerCrop().placeholder(getDrawable(R.drawable.img_student)).centerCrop().into(binding.imageUploader)
     }
 
     private fun initView() {

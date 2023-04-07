@@ -22,7 +22,6 @@
 
     <style name="Theme.NourishingGeniusStudent.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-
     <style name="ProgressDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.5</item>

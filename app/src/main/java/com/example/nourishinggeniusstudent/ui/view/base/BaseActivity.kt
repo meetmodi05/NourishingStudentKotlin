@@ -21,7 +21,7 @@ open class BaseActivity : AppCompatActivity() {
     private var snackbar: Snackbar? = null
     var session: Session? = null
     private var progressDialog: ProgressDialog? = null
-    var permissionListener: BaseActivity.PermissionListener? = null
+    var permissionListener: PermissionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

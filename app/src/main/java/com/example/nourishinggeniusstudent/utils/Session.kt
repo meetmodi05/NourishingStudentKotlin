@@ -3,6 +3,8 @@ package com.example.nourishinggeniusstudent.utils
 import android.content.Context
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.model.auth.User
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 class Session(val context: Context) {
@@ -63,6 +65,10 @@ class Session(val context: Context) {
     fun logout() {
         if (isLoggedIn) {
             pref.edit().clear().apply()
+            val auth = Firebase.auth
+            if(auth.currentUser !=null) {
+                auth.signOut()
+            }
         }
     }
 

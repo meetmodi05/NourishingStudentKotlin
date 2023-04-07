@@ -1,6 +1,7 @@
 package com.example.nourishinggeniusstudent.ui.view.setting
 
 import android.os.Bundle
+import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityFeedBackBinding
 import com.example.nourishinggeniusstudent.ui.view.auth.AuthViewModel
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity

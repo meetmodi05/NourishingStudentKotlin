@@ -65,6 +65,7 @@
     <string name="my_enrollments_description">You have not yet enrolled in any plan, so what’re you waiting for? Go grab one!</string>
     <string name="check_out">Check out</string>
     <string name="feedback_text"><![CDATA[Share your valuable feedback & let us know what more features you want from us. Thank you!]]></string>
+    <string name="feedback">Feedback</string>
     <string name="submit">Submit</string>
     <string name="write_here">Write Here…</string>
     <string name="help_desk_description">We\'re extremely sorry that you ran into some trouble. Don\'t worry, we\'re always available to help you out.</string>
@@ -157,4 +158,10 @@
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="save_changes">Save Changes</string>
+
+    <!--    Facebook-->
+    <string name="facebook_app_id">888528152351382</string>
+    <string name="fb_login_protocol_scheme">fb888528152351382</string>
+    <string name="facebook_client_token">02af25d1d8c28a34fc7cb5384d314420</string>
+
 </resources>

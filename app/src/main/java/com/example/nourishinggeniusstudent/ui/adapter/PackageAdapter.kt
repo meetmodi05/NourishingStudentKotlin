@@ -11,7 +11,9 @@ import com.example.nourishinggeniusstudent.model.data.PackagesModel
 import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingActivity
 
 class PackageAdapter(
-    private val context: Context, private val packageList: ArrayList<Packages>
+    private val context: Context,
+    private val packageList: ArrayList<Packages>,
+    val listener: (Packages) -> Unit
 ) : Adapter<PackageAdapter.ViewHolder>() {
     class ViewHolder(var binding: RvpackageslayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun binding(data: Packages) {
@@ -32,6 +34,11 @@ class PackageAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(packageList[position])
+        holder.binding.btnBuyNow.setOnClickListener {
+            if (packageList[position].buttonText == "Buy Now!") {
+                listener(packageList[position])
+            }
+        }
     }
 
     override fun getItemCount(): Int {
