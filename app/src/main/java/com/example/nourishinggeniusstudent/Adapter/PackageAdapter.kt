@@ -5,18 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvpackageslayoutBinding
-import com.example.nourishinggeniusstudent.model.PackagesModel
+import com.example.nourishinggeniusstudent.model.Packages.*
 import com.example.nourishinggeniusstudent.ui.view.GetCounsellingActivity
 
 class PackageAdapter(
-    private val context: GetCounsellingActivity, private val packageList: ArrayList<PackagesModel>
+    private val packageList: MutableList<PackagesModel>
 ) : Adapter<PackageAdapter.ViewHolder>() {
     class ViewHolder(var binding: RvpackageslayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: PackagesModel) {
 
-            binding.tvDescription.text = blog.description
-            binding.careerSelection.text = blog.title
-            binding.tvSubTitle.text = blog.subTitle
+            binding.careerSelection.text = blog.packageTitle
+            binding.tvPackageCost.text = blog.packageCost
+            binding.tvTitle.text = blog.packageContent
+            binding.btnBuyNow.text = blog.buttonText
         }
 
     }
@@ -24,9 +25,7 @@ class PackageAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             RvpackageslayoutBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }

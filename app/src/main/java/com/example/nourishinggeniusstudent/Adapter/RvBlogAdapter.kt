@@ -3,11 +3,10 @@ package com.example.nourishinggeniusstudent.Adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvBlogLayoutBinding
-import com.example.nourishinggeniusstudent.model.BlogModel
+import com.example.nourishinggeniusstudent.model.Blog.BlogModel
 import com.example.nourishinggeniusstudent.ui.view.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 

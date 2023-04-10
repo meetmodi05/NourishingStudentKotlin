@@ -13,11 +13,14 @@ import com.example.nourishinggeniusstudent.Adapter.*
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardBinding
 import com.example.nourishinggeniusstudent.model.*
+import com.example.nourishinggeniusstudent.model.Domain.DomainModel
 import com.example.nourishinggeniusstudent.ui.view.Career.CareerActivity
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
+import com.example.nourishinggeniusstudent.ui.viewModel.BlogViewModel
 
 class DashBoardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashBoardBinding
+    private val blogViewModel by lazy { BlogViewModel() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
@@ -79,14 +82,18 @@ class DashBoardActivity : AppCompatActivity() {
         }
 
         //Blogs RecyclerView
-        val blogList = arrayListOf<BlogModel>()
-        blogList.add(BlogModel(R.drawable.insert_chart, "Careers"))
-        blogList.add(BlogModel(R.drawable.round_person_24, "Discipline"))
-        blogList.add(BlogModel(R.drawable.assignment_white, "Self\nAssessment"))
-        blogList.add(BlogModel(R.drawable.policy, "Self\nProductivity"))
+//        val blogList = arrayListOf<BlogModel>()
+//        blogList.add(BlogModel(R.drawable.insert_chart, "Careers"))
+//        blogList.add(BlogModel(R.drawable.round_person_24, "Discipline"))
+//        blogList.add(BlogModel(R.drawable.assignment_white, "Self\nAssessment"))
+//        blogList.add(BlogModel(R.drawable.policy, "Self\nProductivity"))
+//
+//        binding.rvBlog.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+//        binding.rvBlog.adapter = RvBlogAdapter(this, blogList)
 
-        binding.rvBlog.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvBlog.adapter = RvBlogAdapter(this, blogList)
+        blogViewModel.init()
+        blogViewModel.blogList()
+        setBlogAdapter()
 
         //Domain Expert RecyclerView
         val domainExpertList = arrayListOf<DomainModel>()
@@ -148,26 +155,28 @@ class DashBoardActivity : AppCompatActivity() {
         binding.tvSeeAll.setOnClickListener {
             startActivity(
                 Intent(
-                    this,
-                    BlogActivity::class.java
+                    this, BlogActivity::class.java
                 )
             )
         }
         binding.tvSeeAll2.setOnClickListener {
             startActivity(
                 Intent(
-                    this,
-                    DomainActivity::class.java
+                    this, DomainActivity::class.java
                 )
             )
         }
         binding.tvExplore.setOnClickListener {
             startActivity(
                 Intent(
-                    this,
-                    DomainActivity::class.java
+                    this, DomainActivity::class.java
                 )
             )
         }
+    }
+
+    private fun setBlogAdapter() {
+        binding.rvBlog.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+        binding.rvBlog.adapter = blogViewModel.getBlogAdapter()
     }
 }

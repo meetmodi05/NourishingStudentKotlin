@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvDomainLayoutBinding
-import com.example.nourishinggeniusstudent.model.DomainModel
+import com.example.nourishinggeniusstudent.model.Domain.DomainModel
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
 

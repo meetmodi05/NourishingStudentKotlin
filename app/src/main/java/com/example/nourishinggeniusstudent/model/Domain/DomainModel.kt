@@ -1,4 +1,4 @@
-package com.example.nourishinggeniusstudent.model
+package com.example.nourishinggeniusstudent.model.Domain
 
 class DomainModel(
      val img: Int? = null,

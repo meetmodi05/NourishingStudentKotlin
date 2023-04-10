@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.CareerLayoutBinding
-import com.example.nourishinggeniusstudent.model.CareerPost
+import com.example.nourishinggeniusstudent.model.Career.CareerPost
 import com.example.nourishinggeniusstudent.ui.view.Career.CareerInfo
 import com.example.nourishinggeniusstudent.ui.viewModel.Career.CareerViewModel
 
@@ -26,7 +26,6 @@ class CareerAdapter(
     }
 
     override fun onBindViewHolder(holder: MyView, position: Int) {
-        val cPost = CareerPost()
         holder.binding(list[position])
         Glide.with(holder.binding.img1.context).load(list[position].img).override(312, 312)
             .into(holder.binding.img1)

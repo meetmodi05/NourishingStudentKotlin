@@ -39,7 +39,8 @@
     <string name="inv">Investment Vs Earning Potential</string>
     <string name="str_weak">Strengths &amp; Weakness</string>
     <string name="lorem_ipsum">StrengthsLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo a diam sollicitudin tempor. Sit amet commodo nulla facilisi nullam vehicula ipsum. Urna neque viverra justo nec ultrices. Fringilla est ullamcorper eget nulla facilisi. Enim nunc faucibus a pellentesque sit amet. Etiam dignissim diam quis enim lobortis. Nullam eget felis eget nunc lobortis mattis aliquam. In dictum non consectetur a erat. Risus pretium quam vulputate dignissim suspendisse in.</string>
-    <string name="career_selection_nrs_3999">Career Selection\nRs.3999</string>
+    <string name="career_selection">Career Selection</string>
+    <string name="career_selection_cost">Rs.3999</string>
     <string name="_2_counseling_1_to_1_sessions_with_career_counselor">2 Counseling 1 to 1 sessions with Career Counselor.</string>
     <string name="psychometric_assessment_report">Psychometric Assessment Report.</string>
     <string name="career_selection_premium_pack_nrs_4999">Career Selection Premium Pack\nRs.4999</string>

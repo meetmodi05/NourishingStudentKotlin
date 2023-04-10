@@ -3,7 +3,7 @@ package com.example.nourishinggeniusstudent.ui.viewModel.Career
 import androidx.lifecycle.MutableLiveData
 import com.example.nourishinggeniusstudent.Adapter.CareerAdapter
 import com.example.nourishinggeniusstudent.Networking.usecases.CareerUseCase
-import com.example.nourishinggeniusstudent.model.CareerPost
+import com.example.nourishinggeniusstudent.model.Career.CareerPost
 import com.example.nourishinggeniusstudent.ui.viewModel.BaseViewModel
 
 class CareerViewModel : BaseViewModel() {
@@ -22,6 +22,7 @@ class CareerViewModel : BaseViewModel() {
                 careerList.clear()
                 careerList.addAll(it)
                 careerAdapter.notifyDataSetChanged()
+
 
                 println("++++++++++careerList++++++++++$careerList")
             } else {

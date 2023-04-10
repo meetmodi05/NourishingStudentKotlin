@@ -1,22 +1,20 @@
 package com.example.nourishinggeniusstudent.Adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.nourishinggeniusstudent.databinding.MostPopularLayoutBinding
-import com.example.nourishinggeniusstudent.model.MostPopularModel
-import com.example.nourishinggeniusstudent.ui.view.BlogActivity
+import com.bumptech.glide.Glide
+import com.example.nourishinggeniusstudent.databinding.RvBlogLayoutBinding
+import com.example.nourishinggeniusstudent.model.Blog.BlogModel
 
 class BlogAdapter(
-    private val blogActivity: BlogActivity,
-    private val blogList: ArrayList<MostPopularModel>
+    private val blogList: MutableList<BlogModel>
 ) : Adapter<BlogAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            MostPopularLayoutBinding.inflate(
+            RvBlogLayoutBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -28,16 +26,13 @@ class BlogAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding(blogList[position])
+        Glide.with(holder.binding.blogImg1.context).load(blogList[position].img).override(312, 312)
+            .into(holder.binding.blogImg1)
     }
 
-    class MyViewHolder(var binding: MostPopularLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun binding(blog: MostPopularModel) {
-            binding.imageView.setImageResource(blog.mainImg!!)
-            binding.icon.setImageResource(blog.icon!!)
-            binding.tvDescription.text = blog.description
-            binding.tvQTitle.text = blog.title
-            binding.tvMiniTitle.text = blog.miniTitle
+    class MyViewHolder(var binding: RvBlogLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun binding(blog: BlogModel) {
+            binding.blogTvTitle.text = blog.title
         }
     }
 }

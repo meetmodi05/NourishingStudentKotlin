@@ -19,15 +19,25 @@
             android:id="@+id/careerSelection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
-            android:text="@string/career_selection_nrs_3999"
+            android:paddingTop="10dp"
+            android:text="@string/career_selection"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvSubTitle"
+            android:id="@+id/tvPackageCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/career_selection_cost"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -37,16 +47,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:text="@string/_2_counseling_1_to_1_sessions_with_career_counselor"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_buyNow"

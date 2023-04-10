@@ -17,22 +17,22 @@ class BlogActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.backAeroIcon.setOnClickListener { finish() }
 
-        val blogList = arrayListOf<MostPopularModel>()
-        //ArrayList
-
-        blogList.add(
-            MostPopularModel(
-                R.drawable.img_1,
-                R.drawable.assignment,
-                getString(R.string.why_is_career_guidence_important),
-                getString(R.string.in_self_assessment),
-                getString(R.string.careerTxt)
-            )
-        )
-
-
-        binding.rvBLogList.layoutManager = LinearLayoutManager(this)
-        binding.rvBLogList.adapter = BlogAdapter(this, blogList)
+//        val blogList = arrayListOf<MostPopularModel>()
+//        //ArrayList
+//
+//        blogList.add(
+//            MostPopularModel(
+//                R.drawable.img_1,
+//                R.drawable.assignment,
+//                getString(R.string.why_is_career_guidence_important),
+//                getString(R.string.in_self_assessment),
+//                getString(R.string.careerTxt)
+//            )
+//        )
+//
+//
+//        binding.rvBLogList.layoutManager = LinearLayoutManager(this)
+//        binding.rvBLogList.adapter = BlogAdapter(this, blogList)
 
         val dropList = arrayListOf<String>()
         dropList.add("Careers")
