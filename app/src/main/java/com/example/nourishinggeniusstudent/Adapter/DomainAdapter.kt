@@ -7,17 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvDomainLayoutBinding
 import com.example.nourishinggeniusstudent.model.Domain.DomainModel
-import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
 
 class DomainAdapter(
-    private val dashBoardActivity: DashBoardActivity,
-    private val domainExpertList: ArrayList<DomainModel>
+    private val domainExpertList: MutableList<DomainModel>
 ) : Adapter<DomainAdapter.DomainHolder>() {
     class DomainHolder(var binding: RvDomainLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun binding(model: DomainModel) {
-            binding.domainImg1.setImageResource(model.img!!)
-            binding.domainTvTitle.text = model.title
+//            binding.domainImg1.setImageResource(model.!!)
+            binding.domainTvTitle.text = model.termName
         }
     }
 
@@ -34,8 +32,8 @@ class DomainAdapter(
     override fun onBindViewHolder(holder: DomainHolder, position: Int) {
         holder.binding(domainExpertList[position])
         holder.itemView.setOnClickListener {
-            val intent = Intent(dashBoardActivity, DomainActivity::class.java)
-            dashBoardActivity.startActivity(intent)
+            val intent = Intent(holder.itemView.context, DomainActivity::class.java)
+            holder.itemView.context.startActivity(intent)
         }
     }
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.nourishinggeniusstudent.databinding.RvBlogLayoutBinding
 import com.example.nourishinggeniusstudent.model.Blog.BlogModel
-import com.example.nourishinggeniusstudent.ui.view.BlogActivity
+import com.example.nourishinggeniusstudent.ui.view.Blog.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 
 class RvBlogAdapter(
@@ -15,8 +15,9 @@ class RvBlogAdapter(
 ) : Adapter<RvBlogAdapter.ViewHolder>() {
     class ViewHolder(var binding: RvBlogLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun binding(model: BlogModel) {
-            binding.blogImg1.setImageResource(model.img!!)
+//            binding.blogImg1.setImageResource(model.img!!)
             binding.blogTvTitle.text = model.title
+//            binding.blogTvTitle.text = model.name
         }
     }
 

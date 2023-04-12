@@ -1,10 +1,9 @@
-package com.example.nourishinggeniusstudent.ui.viewModel
+package com.example.nourishinggeniusstudent.ui.viewModel.Dashboard
 
 import androidx.lifecycle.MutableLiveData
-import com.example.nourishinggeniusstudent.Networking.usecases.BlogUseCase
 import com.example.nourishinggeniusstudent.model.Blog.BlogDataModel
-import com.example.nourishinggeniusstudent.model.Blog.BlogModel
 import com.example.nourishinggeniusstudent.model.MostPopularModel
+import com.example.nourishinggeniusstudent.ui.viewModel.BaseViewModel
 
 class DashBoardViewModel : BaseViewModel() {
     private var blogList: ArrayList<MostPopularModel> = arrayListOf()

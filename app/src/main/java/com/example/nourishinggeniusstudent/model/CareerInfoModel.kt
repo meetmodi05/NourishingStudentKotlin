@@ -9,7 +9,7 @@ class CareerInfoModel(
     val designation: String? = null
 )
 
-data class CareerDetail(
+data class CareerInfoDetail(
     @SerializedName("career_id") val careerId: Int? = null,
     @SerializedName("career_title") val careerTitle: String? = null,
     @SerializedName("career_logo") val careerLogo: String? = null,

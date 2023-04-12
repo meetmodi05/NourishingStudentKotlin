@@ -9,14 +9,14 @@ import com.example.nourishinggeniusstudent.model.TopExpertModel
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
 
 class AllDomainAdapter(
-    private val domainActivity: DomainActivity, private val topExpertList: ArrayList<TopExpertModel>
+    private val topExpertList: ArrayList<TopExpertModel>
 ) : RecyclerView.Adapter<AllDomainAdapter.ViewHolder>() {
     class ViewHolder(val binding: RvDomainAllLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(topExpertModel: TopExpertModel) {
-            binding.allDomainImg1.setImageResource(topExpertModel.img!!)
+//            binding.allDomainImg1.(topExpertModel.img!!)
+
             binding.allDomainTvTitle.text = topExpertModel.title
-            binding.allDomainTvDesignation.text = topExpertModel.designation
             Glide.with(binding.allDomainImg1).load(topExpertModel.img).override(525, 325)
                 .into(binding.allDomainImg1)
         }
@@ -37,6 +37,9 @@ class AllDomainAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(topExpertList[position])
+        Glide.with(holder.binding.allDomainImg1.context).load(topExpertList[position].img)
+            .override(312, 312)
+            .into(holder.binding.allDomainImg1)
     }
 
 }

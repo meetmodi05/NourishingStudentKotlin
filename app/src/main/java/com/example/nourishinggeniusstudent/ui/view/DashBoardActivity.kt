@@ -13,14 +13,20 @@ import com.example.nourishinggeniusstudent.Adapter.*
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardBinding
 import com.example.nourishinggeniusstudent.model.*
-import com.example.nourishinggeniusstudent.model.Domain.DomainModel
+import com.example.nourishinggeniusstudent.ui.view.Blog.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.Career.CareerActivity
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
-import com.example.nourishinggeniusstudent.ui.viewModel.BlogViewModel
+import com.example.nourishinggeniusstudent.ui.viewModel.Blog.BlogViewModel
+import com.example.nourishinggeniusstudent.ui.viewModel.CaseStudiesViewModel
+import com.example.nourishinggeniusstudent.ui.viewModel.Domain.DomainViewModel
+import com.example.nourishinggeniusstudent.ui.viewModel.TopExpertViewModel
 
 class DashBoardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashBoardBinding
     private val blogViewModel by lazy { BlogViewModel() }
+    private val domainViewModel by lazy { DomainViewModel() }
+    private val caseStudiesViewModel by lazy { CaseStudiesViewModel() }
+    private val topExpertViewModel by lazy { TopExpertViewModel() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
@@ -82,42 +88,39 @@ class DashBoardActivity : AppCompatActivity() {
         }
 
         //Blogs RecyclerView
-//        val blogList = arrayListOf<BlogModel>()
-//        blogList.add(BlogModel(R.drawable.insert_chart, "Careers"))
-//        blogList.add(BlogModel(R.drawable.round_person_24, "Discipline"))
-//        blogList.add(BlogModel(R.drawable.assignment_white, "Self\nAssessment"))
-//        blogList.add(BlogModel(R.drawable.policy, "Self\nProductivity"))
-//
-//        binding.rvBlog.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-//        binding.rvBlog.adapter = RvBlogAdapter(this, blogList)
+
 
         blogViewModel.init()
         blogViewModel.blogList()
         setBlogAdapter()
 
         //Domain Expert RecyclerView
-        val domainExpertList = arrayListOf<DomainModel>()
-        domainExpertList.add(DomainModel(R.drawable.suit_icon_vector, "Entrepreneur"))
-        domainExpertList.add(DomainModel(R.drawable.law_icon, "Lawyer"))
-        domainExpertList.add(DomainModel(R.drawable.microsscope, "Scientist"))
-        domainExpertList.add(DomainModel(R.drawable.engineering, "Engineer"))
 
-        binding.rvDomain.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvDomain.adapter = DomainAdapter(this, domainExpertList)
+        domainViewModel.init()
+        domainViewModel.getDomainList()
+        setDomainAdapter()
+
+        caseStudiesViewModel.init()
+        caseStudiesViewModel.caseStudiesList()
+        setCaseStudiesAdapter()
+
+        topExpertViewModel.init()
+        topExpertViewModel.getTopExpertList()
+        setTopExpertAdapter()
 
         //Top Expert Recycler
-        val topExpertList = arrayListOf<TopExpertModel>()
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Kunal Shah", "Entrepreneur"))
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Akshat Dave", "Entrepreneur"))
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Jay Dosi", "Entrepreneur"))
-        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Rahul Patel", "Entrepreneur"))
-
-        binding.rvTopExpert.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding.rvTopExpert.adapter = TopExpertAdapter(this, topExpertList)
-
-        binding.rvCaseStudies.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvCaseStudies.adapter = DomainAdapter(this, domainExpertList)
+//        val topExpertList = arrayListOf<TopExpertModel>()
+//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Kunal Shah", "Entrepreneur"))
+//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Akshat Dave", "Entrepreneur"))
+//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Jay Dosi", "Entrepreneur"))
+//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Rahul Patel", "Entrepreneur"))
+//
+//        binding.rvTopExpert.layoutManager =
+//            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+//        binding.rvTopExpert.adapter = TopExpertAdapter(this, topExpertList)
+//
+//        binding.rvCaseStudies.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+//        binding.rvCaseStudies.adapter = DomainAdapter(this, domainExpertList)
 
         //Successful Model Recycler
         val successfulList = arrayListOf<SuccessfulModel>()
@@ -169,14 +172,29 @@ class DashBoardActivity : AppCompatActivity() {
         binding.tvExplore.setOnClickListener {
             startActivity(
                 Intent(
-                    this, DomainActivity::class.java
+                    this, CaseStudiesActivity::class.java
                 )
             )
         }
     }
 
+    private fun setDomainAdapter() {
+        binding.rvDomain.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+        binding.rvDomain.adapter = domainViewModel.getDomainAdapter()
+    }
+
     private fun setBlogAdapter() {
         binding.rvBlog.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.rvBlog.adapter = blogViewModel.getBlogAdapter()
+    }
+
+    private fun setCaseStudiesAdapter() {
+        binding.rvCaseStudies.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+        binding.rvCaseStudies.adapter = caseStudiesViewModel.caseStudiesAdapter()
+    }
+
+    private fun setTopExpertAdapter() {
+        binding.rvTopExpert.layoutManager = GridLayoutManager(this, 2)
+        binding.rvTopExpert.adapter = topExpertViewModel.getAdapter()
     }
 }

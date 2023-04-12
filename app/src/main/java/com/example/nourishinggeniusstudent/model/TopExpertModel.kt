@@ -1,7 +1,8 @@
 package com.example.nourishinggeniusstudent.model
 
+import com.google.gson.annotations.SerializedName
+
 class TopExpertModel(
-    val img: Int? = null,
-    val title: String? = null,
-    val designation: String?=null,
+    @SerializedName("domain_expert_study_feature_uri") val img: Int? = null,
+    @SerializedName("domain_expert_study_title") val title: String? = null,
 )

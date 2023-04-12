@@ -9,31 +9,29 @@ import com.example.nourishinggeniusstudent.model.TopExpertModel
 import com.example.nourishinggeniusstudent.ui.view.DashBoardActivity
 
 class TopExpertAdapter(
-    private val dashBoardActivity: DashBoardActivity,
-    private val topExpertList: ArrayList<TopExpertModel>
+    private val topExpertList: MutableList<TopExpertModel>
 ) : RecyclerView.Adapter<TopExpertAdapter.ViewHolder>() {
-    inner class ViewHolder(private val binding: RvTopExpertLayoutBinding) :
+    inner class ViewHolder(val binding: RvTopExpertLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: TopExpertModel) {
-            binding.topExpertImg1.setImageResource(blog.img!!)
             binding.topExpertTvTitle.text = blog.title
-            Glide.with(binding.topExpertImg1).load(topExpertList[position].img)
-                .override(600, 512).into(binding.topExpertImg1)
+//
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             RvTopExpertLayoutBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(topExpertList[position])
+        Glide.with(holder.binding.topExpertImg1.context).load(topExpertList[position].img)
+            .override(312, 312).into(holder.binding.topExpertImg1)
+
     }
 
     override fun getItemCount(): Int {

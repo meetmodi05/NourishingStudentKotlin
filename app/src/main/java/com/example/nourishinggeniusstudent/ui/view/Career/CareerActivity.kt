@@ -18,7 +18,6 @@ class CareerActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.close.setOnClickListener { finish() }
 
-
         if (savedInstanceState == null) viewModel.init()
         viewModel.getCareerList()
         setAdapter()

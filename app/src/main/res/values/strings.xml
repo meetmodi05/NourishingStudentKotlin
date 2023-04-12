@@ -22,6 +22,7 @@
     <string name="hi">Hi ! 🙋🏻‍♂️</string>
     <string name="welcome_to_nourishing_genius">Welcome to Nourishing Genius.</string>
     <string name="domain_expert">Domain Expert</string>
+    <string name="caseStudies">Case Studies</string>
     <string name="search_among_4_domain_experts">Search among 4 Domain Experts</string>
     <string name="todo">TODO</string>
     <string name="career_info">Career Info</string>
@@ -146,4 +147,5 @@
     <string name="username">User Name</string>
     <string name="newsletters">Newsletters</string>
     <string name="all">All</string>
+    <string name="choose_domain">Choose Domain</string>
 </resources>

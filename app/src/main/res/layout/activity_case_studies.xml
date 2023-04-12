@@ -5,30 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.view.Blog.BlogActivity">
+    tools:context=".ui.view.CaseStudiesActivity">
 
     <RelativeLayout
+        android:id="@+id/parentRelative"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="10dp">
+        android:layout_gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="10dp">
 
         <ImageView
             android:id="@+id/back_aero_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:contentDescription="@string/todo"
             android:src="@drawable/keyboard_backspace" />
 
         <TextView
             android:id="@+id/career_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Blogs"
-            android:padding="5dp"
             android:gravity="center_horizontal"
+            android:text="@string/caseStudies"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -36,42 +38,40 @@
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        app:hintEnabled="false"
-        android:padding="3dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:hintEnabled="false">
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTV_Blog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:hint="@string/search_among_4_domain_experts"
             android:imeOptions="actionDone"
-            android:inputType="textAutoComplete"
-            android:hint="Search among 1 blogs..."
+            android:inputType="text"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
-        android:padding="3dp"
-        app:hintEnabled="false"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:hintEnabled="false">
 
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/autoCompleteTV"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:hint="@string/all"
             android:layout_margin="10dp"
+            android:hint="@string/choose_domain"
             android:inputType="none"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_BLog_List"
-        android:padding="5dp"
-        android:layout_marginHorizontal="15dp"
+        android:id="@+id/rvCaseStudies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:gravity="center" />
 </androidx.appcompat.widget.LinearLayoutCompat>

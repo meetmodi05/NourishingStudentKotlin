@@ -1,9 +1,10 @@
-package com.example.nourishinggeniusstudent.ui.viewModel
+package com.example.nourishinggeniusstudent.ui.viewModel.Blog
 
 import androidx.lifecycle.MutableLiveData
 import com.example.nourishinggeniusstudent.Adapter.BlogAdapter
 import com.example.nourishinggeniusstudent.Networking.usecases.BlogUseCase
 import com.example.nourishinggeniusstudent.model.Blog.BlogModel
+import com.example.nourishinggeniusstudent.ui.viewModel.BaseViewModel
 
 class BlogViewModel : BaseViewModel() {
     private var blogList: MutableList<BlogModel> = mutableListOf()
