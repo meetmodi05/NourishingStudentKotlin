@@ -3,6 +3,14 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        jcenter()
+        maven {
+            url "s3://com.ginger.temaven.s3.amazonaws.com"
+            credentials(AwsCredentials) {
+                accessKey "AKIA33J25GCDSQ54Q2PC"
+                secretKey "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"
+            }
+        }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +18,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven {
+            url "s3://com.ginger.temaven.s3.amazonaws.com"
+            credentials(AwsCredentials) {
+                accessKey "AKIA33J25GCDSQ54Q2PC"
+                secretKey "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"
+            }
+        }
     }
 }
 rootProject.name = "NourishingGeniusStudent"

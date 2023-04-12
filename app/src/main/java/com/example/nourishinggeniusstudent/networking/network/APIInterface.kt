@@ -7,6 +7,7 @@ import com.example.nourishinggeniusstudent.model.casestudy.CaseStudyData
 import com.example.nourishinggeniusstudent.model.casestudy.SortRoles
 import com.example.nourishinggeniusstudent.model.data.BlogDataModel
 import com.example.nourishinggeniusstudent.model.data.PackagesModel
+import com.example.nourishinggeniusstudent.model.data.PaymentHistory
 import com.example.nourishinggeniusstudent.model.domain.DomainData
 import com.example.nourishinggeniusstudent.model.response.*
 import io.reactivex.Observable
@@ -142,7 +143,7 @@ interface APIInterface {
     @Multipart
     @POST("domain_expert/postbypostid")
     fun getDomainData(
-        @Part("id") id: RequestBody,
+        @Part("domainexpert_id") id: RequestBody,
         @Part("role") role: RequestBody = "student".toRequestBody(),
     ): Observable<BaseModel<DomainData>>
 
@@ -158,12 +159,24 @@ interface APIInterface {
         @Part("email_address") email_address: RequestBody,
     ): Observable<BaseModel<Any?>>
 
-
     @Multipart
     @POST("packages/getpackages")
     fun getSubscriptionPackages(
         @Part("role") role: RequestBody = "student".toRequestBody(),
     ): Observable<BaseModel<PackagesModel>>
 
+    @Multipart
+    @POST("payment/create_payment")
+    fun createPayment(
+        @Part("package_id") packageId: RequestBody,
+        @Part("user_id") userId: RequestBody,
+        @Part("razorpay_id") razorpayId: RequestBody,
+    ): Observable<BaseModel<Any?>>
+
+    @Multipart
+    @POST("payment/payment_history")
+    fun paymentHistory(
+        @Part("user_id") userId: RequestBody,
+    ): Observable<BaseModel<List<PaymentHistory>>>
 
 }

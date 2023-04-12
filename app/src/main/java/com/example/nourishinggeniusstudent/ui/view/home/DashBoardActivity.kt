@@ -13,6 +13,7 @@ import com.example.nourishinggeniusstudent.model.response.DashboardResponseModel
 import com.example.nourishinggeniusstudent.ui.adapter.*
 import com.example.nourishinggeniusstudent.ui.view.caseStudy.CaseStudyActivity
 import com.example.nourishinggeniusstudent.ui.view.assessment.IdentifyGeniusActivity
+import com.example.nourishinggeniusstudent.ui.view.auth.AuthViewModel
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.blog.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.blog.BlogDetailsActivity
@@ -33,12 +34,14 @@ class DashBoardActivity : BaseActivity() {
     private val viewModel by lazy { DashboardViewModel(this) }
     private val caseStudyViewModel by lazy { CaseStudyViewModel(this) }
     private val domainViewModel by lazy { DomainViewModel(this) }
+    private val profileViewModel by lazy { AuthViewModel(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel.isLoading.value = true
         viewModel.getDashboardData()
+        profileViewModel.getuserinfobyid(session?.user?.userId.toString())
         setClickListeners()
         setObservers()
         Glide.with(this).load(
@@ -57,6 +60,9 @@ class DashBoardActivity : BaseActivity() {
         viewModel.subscribeToNewsletter.observe(this) {
             showToast(it)
             binding.mailET.setText("")
+        }
+        profileViewModel.userData.observe(this) {
+            session?.user = it
         }
     }
 

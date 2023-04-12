@@ -75,4 +75,9 @@ dependencies {
     //RazorPay
     implementation 'com.razorpay:checkout:1.6.26'
 
+    //TestService
+//    implementation ('com.service.taas:TestService:1.2.7:release@aar'){
+//        transitive = true
+//    }
+
 }

@@ -163,5 +163,6 @@
     <string name="facebook_app_id">888528152351382</string>
     <string name="fb_login_protocol_scheme">fb888528152351382</string>
     <string name="facebook_client_token">02af25d1d8c28a34fc7cb5384d314420</string>
+    <string name="add_preferred_time"><u>Add Preferred Time</u></string>
 
 </resources>

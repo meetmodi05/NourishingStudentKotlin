@@ -1,5 +1,6 @@
 package com.example.nourishinggeniusstudent.ui.view.subscription
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import com.example.nourishinggeniusstudent.ui.adapter.PackageAdapter
 import com.example.nourishinggeniusstudent.ui.view.auth.LoginActivity
 import com.example.nourishinggeniusstudent.ui.view.auth.LoginActivity.Companion.TAG
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
+import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
 import com.example.nourishinggeniusstudent.utils.Constants
 import com.razorpay.Checkout
 import com.razorpay.PaymentResultListener
@@ -17,6 +19,7 @@ import org.json.JSONObject
 
 class GetCounsellingActivity : BaseActivity(), PaymentResultListener, (Packages) -> Unit {
     private var checkout: Checkout? = null
+    private var packageModel: Packages? = null
     private lateinit var binding: ActivityGetCounsellingBinding
     private val viewModel by lazy { SubscriptionViewModel(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +59,7 @@ class GetCounsellingActivity : BaseActivity(), PaymentResultListener, (Packages)
             retryObj.put("enabled", true)
             retryObj.put("max_count", 2)
             options.put("retry", retryObj)
-
+            this.packageModel = packageModel
             checkout?.open(this, options)
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
@@ -72,6 +75,10 @@ class GetCounsellingActivity : BaseActivity(), PaymentResultListener, (Packages)
         viewModel.packages.observe(this) {
             binding.rvPackages.layoutManager = LinearLayoutManager(this)
             binding.rvPackages.adapter = PackageAdapter(this, it.packagesPosts, this)
+            viewModel.isLoading.value = false
+        }
+        viewModel.responseCreatePayment.observe(this) {
+            finish()
             viewModel.isLoading.value = false
         }
     }
@@ -90,7 +97,11 @@ class GetCounsellingActivity : BaseActivity(), PaymentResultListener, (Packages)
     }
 
     override fun onPaymentSuccess(p0: String?) {
-        showToastLong(p0.toString())
+//        showToastLong(p0.toString())
+        viewModel.isLoading.value = true
+        viewModel.createPayment(
+            packageModel?.packageId.toString(), session?.user?.userId.toString(), p0.toString()
+        )
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {

@@ -30,7 +30,8 @@ class DomainDetailsActivity : BaseActivity() {
     private fun setObservers() {
         viewModel.domainData.observe(this) {
             binding.tvMiniTitle.text = it.title
-            binding.tvDescription.text = Html.fromHtml(it.content, HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.tvSubTitle.text = it.position
+//            binding.tvDescription.text = Html.fromHtml(it.content, HtmlCompat.FROM_HTML_MODE_LEGACY)
             Glide.with(this@DomainDetailsActivity).load(it.featureUri).into(binding.imageView)
             viewModel.isLoading.value = false
         }

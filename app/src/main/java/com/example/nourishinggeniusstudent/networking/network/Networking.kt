@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit
 
 open class Networking(private val context: Context? = null) {
     private var baseURL: String = "https://g2a.8e7.myftpupload.com/wp-json/"
+    private var baseExamURL: String = "https://nourishinggenius.thinkexam.com/api/v1/"
 
     companion object {
 
@@ -28,7 +29,7 @@ open class Networking(private val context: Context? = null) {
         }
     }
 
-    fun getServices(timeOutInMinutes: Long = 2): APIInterface {
+    fun getServices(url : String = baseURL,timeOutInMinutes: Long = 2): APIInterface {
         val httpClient = OkHttpClient.Builder()
         httpClient.readTimeout(timeOutInMinutes, TimeUnit.MINUTES)
         httpClient.connectTimeout(timeOutInMinutes, TimeUnit.MINUTES)
@@ -43,7 +44,7 @@ open class Networking(private val context: Context? = null) {
         //GSON converter
         val gson = GsonBuilder().registerTypeAdapterFactory(ItemTypeAdapterFactory()).create()
 
-        return retrofit2.Retrofit.Builder().baseUrl(baseURL)
+        return retrofit2.Retrofit.Builder().baseUrl(url)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).client(httpClient.build())
             .build().create(APIInterface::class.java)
