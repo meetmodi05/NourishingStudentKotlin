@@ -13,6 +13,8 @@ class BlogRepo {
     fun blogDetail(): Observable<BaseModel<List<BlogModel>>> {
         val map = HashMap<String, RequestBody>()
         map["role"] = toRequestBody("student")
+//        map["search_term"]=toRequestBody("hello")
+//        map["tax_id"]=toRequestBody("1")
         return Networking.with().getRetrofit().sendBlogList(map)
     }
 

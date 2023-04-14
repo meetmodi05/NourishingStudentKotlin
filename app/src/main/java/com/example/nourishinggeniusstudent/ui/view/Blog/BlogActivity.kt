@@ -31,9 +31,15 @@ class BlogActivity : AppCompatActivity() {
         val dropAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dropList)
         binding.autoCompleteTV.setAdapter(dropAdapter)
 
+        blogViewModel.init()
+        blogViewModel.blogList()
+        setAdapter()
+
 
     }
+
     private fun setAdapter() {
-        binding.rvBLogList.layoutManager = GridLayoutManager(this,2)
+        binding.rvBLogList.layoutManager = GridLayoutManager(this, 2)
+        binding.rvBLogList.adapter = blogViewModel.getBlogAdapter()
     }
 }

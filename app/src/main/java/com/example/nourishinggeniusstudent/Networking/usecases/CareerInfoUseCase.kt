@@ -1,5 +1,6 @@
 package com.example.nourishinggeniusstudent.Networking.usecases
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.nourishinggeniusstudent.Networking.network.CallbackObserver
 import com.example.nourishinggeniusstudent.Networking.repo.CareerInfoRepo
@@ -19,10 +20,12 @@ class CareerInfoUseCase(
             .subscribe(object : CallbackObserver<BaseModel<CareerInfoDetail>>() {
                 override fun onSuccess(response: BaseModel<CareerInfoDetail>) {
                     careerInfoLiveData?.postValue(response.dataModel)
+                    Log.d("onSuccess", "onSuccess: $response")
                 }
 
                 override fun onFailed(code: Int, message: String?) {
                     errorLiveData.postValue(message)
+                    Log.e("onFailed", "onFailed: $message++++$code")
                 }
             })
     }

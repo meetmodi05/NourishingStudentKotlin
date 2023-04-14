@@ -22,7 +22,7 @@ class TopExpertUseCase(
                 }
 
                 override fun onFailed(code: Int, message: String?) {
-                    errorLiveData.postValue(message+code)
+                    errorLiveData.postValue(message)
                 }
             })
     }

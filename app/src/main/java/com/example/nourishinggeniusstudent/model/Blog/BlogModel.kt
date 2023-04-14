@@ -9,6 +9,7 @@ class BlogDataModel {
 
 
 data class BlogModel(
+    @SerializedName("id") var id: Int? = null,
     @SerializedName("post_image_url") var img: Boolean? = null,
     @SerializedName("post_title") var title: String? = null,
     @SerializedName("post_name") var name: String? = null

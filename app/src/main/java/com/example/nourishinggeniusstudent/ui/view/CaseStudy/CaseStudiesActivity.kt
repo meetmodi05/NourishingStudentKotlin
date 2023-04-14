@@ -1,4 +1,4 @@
-package com.example.nourishinggeniusstudent.ui.view
+package com.example.nourishinggeniusstudent.ui.view.CaseStudy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

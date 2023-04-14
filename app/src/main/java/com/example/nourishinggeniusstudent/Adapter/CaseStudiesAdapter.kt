@@ -6,21 +6,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.nourishinggeniusstudent.databinding.RvBlogLayoutBinding
 import com.example.nourishinggeniusstudent.databinding.RvDomainAllLayoutBinding
-import com.example.nourishinggeniusstudent.databinding.RvDomainLayoutBinding
 import com.example.nourishinggeniusstudent.model.CaseStudiesModel
+import com.example.nourishinggeniusstudent.model.CaseStudyPost
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
 
 class CaseStudiesAdapter(
-    private val caseStudiesList: MutableList<CaseStudiesModel>
+    private val caseStudiesList: MutableList<CaseStudyPost>
 ) : RecyclerView.Adapter<CaseStudiesAdapter.CaseStudiesHolder>() {
 
     class CaseStudiesHolder(var binding: RvDomainAllLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun binding(model: CaseStudiesModel) {
-            binding.allDomainTvTitle.text = model.name
-            binding.allDomainTvDesignation.text = model.termDescription
+        fun binding(model: CaseStudyPost) {
+            binding.allDomainTvTitle.text = model.cstitle
+            
 
         }
 
@@ -38,7 +37,7 @@ class CaseStudiesAdapter(
 
     override fun onBindViewHolder(holder: CaseStudiesHolder, position: Int) {
         holder.binding(caseStudiesList[position])
-        Glide.with(holder.binding.allDomainImg1.context).load(caseStudiesList[position].img)
+        Glide.with(holder.binding.allDomainImg1.context).load(caseStudiesList[position].image)
             .override(312, 312).into(holder.binding.allDomainImg1)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DomainActivity::class.java)

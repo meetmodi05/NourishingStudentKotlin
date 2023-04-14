@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.view.CaseStudiesActivity">
+    tools:context=".ui.view.CaseStudy.CaseStudiesActivity">
 
     <RelativeLayout
         android:id="@+id/parentRelative"

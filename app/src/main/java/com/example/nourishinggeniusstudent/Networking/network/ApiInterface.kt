@@ -21,10 +21,6 @@ interface ApiInterface {
     fun sendCareerList(@PartMap role: MutableMap<String, RequestBody>): Observable<BaseModel<CareerDataModel>>
 
     @Multipart
-    @POST("career/details")
-    fun sendCarerInfo(@PartMap role: MutableMap<String, RequestBody>): Observable<BaseModel<CareerInfoDetail>>
-
-    @Multipart
     @POST("blog/listing")
     fun sendBlogList(@PartMap role: MutableMap<String, RequestBody>): Observable<BaseModel<List<BlogModel>>>
 
@@ -46,5 +42,17 @@ interface ApiInterface {
 
     @Multipart
     @POST("dashboard/listing")
-    fun dashboardList(@PartMap role: MutableMap<String, RequestBody>): Observable<DashboardModel>
+    fun dashboardDataPost(@PartMap role: MutableMap<String, RequestBody>): Observable<DashboardModel<DataPost>>
+
+    @Multipart
+    @POST("dashboard/listing")
+    fun dashboardDataDomain(@PartMap role: MutableMap<String, RequestBody>): Observable<DashboardModel<DataDomainExport>>
+
+    @Multipart
+    @POST("dashboard/listing")
+    fun dashboardCaseStudy(@PartMap role: MutableMap<String, RequestBody>): Observable<DashboardModel<DataCareers>>
+
+    @Multipart
+    @POST("career/details")
+    fun getCarerInfo(@PartMap role: MutableMap<String, RequestBody>): Observable<BaseModel<CareerInfoDetail>>
 }

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.NourishingGeniusStudent"
         tools:targetApi="31">
         <activity
-            android:name=".ui.view.CaseStudiesActivity"
+            android:name=".ui.view.CaseStudy.CaseStudiesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.Career.CareerInfo"

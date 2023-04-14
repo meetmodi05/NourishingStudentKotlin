@@ -29,15 +29,11 @@ class BlogAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding(blogList[position])
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, BlogActivity::class.java)
-            holder.itemView.context.startActivity(intent)
-        }
+
     }
 
     class MyViewHolder(var binding: RvBlogLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: BlogModel) {
-//            binding.blogImg1.setImageResource(blog.img!!)
             binding.blogTvTitle.text = blog.title
         }
     }

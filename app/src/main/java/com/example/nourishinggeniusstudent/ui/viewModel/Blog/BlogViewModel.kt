@@ -12,9 +12,7 @@ class BlogViewModel : BaseViewModel() {
     private var blogAdapter: BlogAdapter = BlogAdapter(blogList)
 
     private val blogUseCase by lazy {
-        BlogUseCase(
-            errorLiveData = errorLiveData, blogLiveData = blogLiveData
-        )
+        BlogUseCase(errorLiveData, blogLiveData)
     }
 
     fun init() {

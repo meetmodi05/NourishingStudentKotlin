@@ -3,7 +3,7 @@ package com.example.nourishinggeniusstudent.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class DashboardModel : Serializable {
+class DashboardModel<T> : Serializable {
     @SerializedName("status")
     var statusCode: String? = null
 
@@ -11,71 +11,57 @@ class DashboardModel : Serializable {
     var message: String? = null
 
     @SerializedName("data_post")
-    var dataPost: List<DataPost>? = null
+    var dataPost: T? = null
 
     @SerializedName("data_dexperts")
-    var dataDomainExport: List<DataDomainExport>? = null
+    var dataDomainExport: T? = null
 
     @SerializedName("data_careers")
-    var dataCareers: List<DataCareers>? = null
-
+    var dataCareers: T? = null
 }
 
 
-class DataPost {
+class DataPost(
+    @SerializedName("total_post") var totalPost: Int? = null,
 
-    @SerializedName("total_post")
-    var totalPost: Int? = null
+    @SerializedName("default_posts") var defaultDataPosts: List<DefaultDataPost>? = null
+)
 
-    @SerializedName("default_posts")
-    var defaultPosts: List<DefaultPost>? = null
-}
+class DefaultDataPost(
 
-class DefaultPost {
-    @SerializedName("post_id")
-    var id: Int? = null
+    @SerializedName("post_id") var id: Int? = null,
 
-    @SerializedName("post_title")
-    var title: String? = null
+    @SerializedName("post_title") var title: String? = null,
 
-    @SerializedName("post_image_url")
-    var img: Int? = null
-}
+    @SerializedName("post_image_url") var img: Boolean? = null,
 
-class DataDomainExport {
-    @SerializedName("total_domain_expert")
-    var total: Int? = null
+    )
 
-    @SerializedName("dexperts_posts")
-    var post: List<ExportPost>? = null
-}
+class DataDomainExport(
+    @SerializedName("total_domain_expert") var total: Int? = null,
 
-class ExportPost {
-    @SerializedName("dexperts_id")
-    var dExpertId: Int? = null
+    @SerializedName("dexperts_posts") var post: List<ExportPost>? = null,
+)
 
-    @SerializedName("dexperts_title")
-    var title: String? = null
+class ExportPost(
+    @SerializedName("dexperts_id") var dExpertId: Int? = null,
 
-    @SerializedName("post_image_url")
-    var img: Int? = null
-}
+    @SerializedName("dexperts_title") var title: String? = null,
 
-class DataCareers {
-    @SerializedName("total_casestody")
-    var totalCaseStudy: Int? = null
+    @SerializedName("post_image_url") var img: String? = null
+)
 
-    @SerializedName("casestudys_posts")
-    var caseStudyPosts: List<CaseStudyPost>? = null
-}
+class DataCareers(
+    @SerializedName("total_casestody") var totalCaseStudy: Int? = null,
 
-class CaseStudyPost {
-    @SerializedName("CaseStudyPost")
-    var id: Int? = null
+    @SerializedName("casestudys_posts") var caseStudyPosts: List<CaseStudyPost>? = null
+)
 
-    @SerializedName("casestodys_title")
-    var cstitle: String? = null
 
-    @SerializedName("post_image_url")
-    var image: Int? = null
-}
+class CaseStudyPost(
+    @SerializedName("CaseStudyPost") var id: Int? = null,
+
+    @SerializedName("casestodys_title") var cstitle: String? = null,
+
+    @SerializedName("post_image_url") var image: String? = null,
+)

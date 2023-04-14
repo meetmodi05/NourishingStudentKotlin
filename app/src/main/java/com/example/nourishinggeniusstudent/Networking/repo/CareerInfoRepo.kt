@@ -12,8 +12,8 @@ class CareerInfoRepo {
     fun careerInfo(): Observable<BaseModel<CareerInfoDetail>> {
         val map = mutableMapOf<String, RequestBody>()
         map["role"] = toRequestBody("student")
-        map["career_id"] = toRequestBody("140")
-        return Networking.with().getRetrofit().sendCarerInfo(map)
+        map["career_id"] = toRequestBody("142")
+        return Networking.with().getRetrofit().getCarerInfo(map)
     }
 
     private fun toRequestBody(value: String): RequestBody {

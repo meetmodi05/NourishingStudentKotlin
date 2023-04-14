@@ -8,25 +8,25 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.nourishinggeniusstudent.Adapter.*
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardBinding
 import com.example.nourishinggeniusstudent.model.*
 import com.example.nourishinggeniusstudent.ui.view.Blog.BlogActivity
 import com.example.nourishinggeniusstudent.ui.view.Career.CareerActivity
+import com.example.nourishinggeniusstudent.ui.view.CaseStudy.CaseStudiesActivity
 import com.example.nourishinggeniusstudent.ui.view.Domain.DomainActivity
 import com.example.nourishinggeniusstudent.ui.viewModel.Blog.BlogViewModel
 import com.example.nourishinggeniusstudent.ui.viewModel.CaseStudiesViewModel
+import com.example.nourishinggeniusstudent.ui.viewModel.DashboardViewModel
 import com.example.nourishinggeniusstudent.ui.viewModel.Domain.DomainViewModel
-import com.example.nourishinggeniusstudent.ui.viewModel.TopExpertViewModel
 
 class DashBoardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashBoardBinding
     private val blogViewModel by lazy { BlogViewModel() }
     private val domainViewModel by lazy { DomainViewModel() }
     private val caseStudiesViewModel by lazy { CaseStudiesViewModel() }
-    private val topExpertViewModel by lazy { TopExpertViewModel() }
+    private val dashboardViewModel by lazy { DashboardViewModel() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
@@ -100,27 +100,21 @@ class DashBoardActivity : AppCompatActivity() {
         domainViewModel.getDomainList()
         setDomainAdapter()
 
-        caseStudiesViewModel.init()
-        caseStudiesViewModel.caseStudiesList()
-        setCaseStudiesAdapter()
+        //Case Studies RV
+//        caseStudiesViewModel.init()
+//        caseStudiesViewModel.caseStudiesList()
+//        setCaseStudiesAdapter()
 
-        topExpertViewModel.init()
-        topExpertViewModel.getTopExpertList()
+        dashboardViewModel.init()
+        dashboardViewModel.getDashboardTopExportList()
         setTopExpertAdapter()
 
-        //Top Expert Recycler
-//        val topExpertList = arrayListOf<TopExpertModel>()
-//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Kunal Shah", "Entrepreneur"))
-//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Akshat Dave", "Entrepreneur"))
-//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Jay Dosi", "Entrepreneur"))
-//        topExpertList.add(TopExpertModel(R.drawable.round_person_24, "Rahul Patel", "Entrepreneur"))
-//
-//        binding.rvTopExpert.layoutManager =
-//            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-//        binding.rvTopExpert.adapter = TopExpertAdapter(this, topExpertList)
-//
-//        binding.rvCaseStudies.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-//        binding.rvCaseStudies.adapter = DomainAdapter(this, domainExpertList)
+        dashboardViewModel.getDashboardCaseStudy()
+        setCaseStudiesAdapter()
+
+        dashboardViewModel.getList()
+        setDashboardDataPostAdapter()
+
 
         //Successful Model Recycler
         val successfulList = arrayListOf<SuccessfulModel>()
@@ -152,8 +146,8 @@ class DashBoardActivity : AppCompatActivity() {
                 getString(R.string.careerTxt)
             )
         )
-        binding.mostPopularRV.layoutManager = LinearLayoutManager(this, VERTICAL, false)
-        binding.mostPopularRV.adapter = MostPopularAdapter(this, mostPopularList)
+//        binding.mostPopularRV.layoutManager = LinearLayoutManager(this, VERTICAL, false)
+//        binding.mostPopularRV.adapter = MostPopularAdapter(this, mostPopularList)
 
         binding.tvSeeAll.setOnClickListener {
             startActivity(
@@ -190,11 +184,17 @@ class DashBoardActivity : AppCompatActivity() {
 
     private fun setCaseStudiesAdapter() {
         binding.rvCaseStudies.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.rvCaseStudies.adapter = caseStudiesViewModel.caseStudiesAdapter()
+        binding.rvCaseStudies.adapter = dashboardViewModel.getCaseStudyDashboardAdapter()
     }
 
     private fun setTopExpertAdapter() {
         binding.rvTopExpert.layoutManager = GridLayoutManager(this, 2)
-        binding.rvTopExpert.adapter = topExpertViewModel.getAdapter()
+        binding.rvTopExpert.adapter = dashboardViewModel.getExportDashboardAdapter()
     }
+
+    private fun setDashboardDataPostAdapter() {
+        binding.rvMostPopular.layoutManager = LinearLayoutManager(this, VERTICAL, false)
+        binding.rvMostPopular.adapter = dashboardViewModel.getAdapter()
+    }
+
 }

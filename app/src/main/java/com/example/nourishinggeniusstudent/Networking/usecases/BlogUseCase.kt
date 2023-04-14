@@ -28,8 +28,8 @@ class BlogUseCase(
                 }
 
                 override fun onFailed(code: Int, message: String?) {
-                    errorLiveData.postValue(message)
                     Log.e("Failed", "onFailed: $message$code")
+                    errorLiveData.postValue(message)
                 }
             })
     }
