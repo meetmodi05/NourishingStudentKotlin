@@ -9,14 +9,10 @@ import com.example.nourishinggeniusstudent.ui.viewModel.BaseViewModel
 
 class CareerInfoViewModel : BaseViewModel() {
     private var careerInfoList: MutableList<CareerInfoDetail> = mutableListOf()
-    private var careerInfoLiveData: MutableLiveData<CareerInfoDetail> = MutableLiveData()
+    var careerInfoLiveData: MutableLiveData<CareerInfoDetail> = MutableLiveData()
 //    private var careerInfoAdapter: CareerInfoAdapter = CareerInfoAdapter(careerInfoList)
 
     private val useCase by lazy { CareerInfoUseCase(errorLiveData, careerInfoLiveData) }
-    fun init() {
-        println("++++++++$careerInfoList++++++++++")
-
-    }
 
     fun getCareerInfoList() = useCase.careerInfoList()
 }
