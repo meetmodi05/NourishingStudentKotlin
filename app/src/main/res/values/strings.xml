@@ -19,7 +19,7 @@
     <string name="how_to_select_a_right_career_nfor_yourself">How to Select a right career\nfor yourself?</string>
     <string name="why_long_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
     <string name="how_long_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
-    <string name="hi">Hi ! 🙋🏻‍♂️</string>
+    <string name="hello">Hello,\n<b>User</b></string>
     <string name="welcome_to_nourishing_genius">Welcome to Nourishing Genius.</string>
     <string name="domain_expert">Domain Expert</string>
     <string name="search">Search</string>
@@ -134,7 +134,7 @@
     <string name="email_example">vijaybhuva90@gmail.com</string>
     <string name="explore_careers">Explore Careers</string>
     <string name="identify_your_genius">Identify\nyour Genius</string>
-    <string name="get_on_counselling">Get | on |\nCounselling</string>
+    <string name="get_on_counselling">Get 1 on 1 Counselling</string>
     <string name="top_expert">Top Expert</string>
     <string name="case_studies_of_highly_successful_people">Case Studies of highly successful people</string>
     <string name="e_mail_id">E-mail ID</string>

@@ -21,11 +21,11 @@ class SplashActivity : BaseActivity() {
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if (session?.isLoggedIn == true) {
-                startActivity(Intent(this@SplashActivity, DashBoardActivity::class.java))
-            } else {
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-            }
+//            if (session?.isLoggedIn == true) {
+            startActivity(Intent(this@SplashActivity, DashBoardActivity::class.java))
+//            } else {
+//                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+//            }
         }, 1500)
 
     }

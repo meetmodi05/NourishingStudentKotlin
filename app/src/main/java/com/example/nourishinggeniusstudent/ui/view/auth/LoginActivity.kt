@@ -146,9 +146,9 @@ class LoginActivity : BaseActivity() {
             return
         }
         viewModel.isLoading.value = true
-        viewModel.loginUser(
-            binding.etEmail.text.toString().trim().lowercase(), binding.etPassword.text.toString()
-        )
+//        viewModel.loginUser(
+//            binding.etEmail.text.toString().trim().lowercase(), binding.etPassword.text.toString()
+//        )
     }
 
     companion object {
