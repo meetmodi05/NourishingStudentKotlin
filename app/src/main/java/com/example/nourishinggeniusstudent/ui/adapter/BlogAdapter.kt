@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.R
-import com.example.nourishinggeniusstudent.databinding.MostPopularLayoutBinding
+import com.example.nourishinggeniusstudent.databinding.RvBlogHomeBinding
 import com.example.nourishinggeniusstudent.model.data.BlogDataModel
-import com.example.nourishinggeniusstudent.model.data.BlogModel
 
 class BlogAdapter(
     private val blogList: ArrayList<BlogDataModel>, private val listener: (BlogDataModel) -> Unit
@@ -18,7 +17,7 @@ class BlogAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            parent.context, MostPopularLayoutBinding.inflate(
+            parent.context, RvBlogHomeBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -35,16 +34,15 @@ class BlogAdapter(
         }
     }
 
-    class MyViewHolder(val mContext: Context, var binding: MostPopularLayoutBinding) :
+    class MyViewHolder(val mContext: Context, var binding: RvBlogHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(blog: BlogDataModel) {
-            Glide.with(mContext).load(blog.postImageUrl).centerCrop().placeholder(
+            Glide.with(mContext).load(blog.postImageUrl).placeholder(
                 ContextCompat.getDrawable(
                     mContext, R.drawable.img_1
                 )
-            ).centerCrop().into(binding.imageView)
-            binding.tvMiniTitle.text = blog.postName
-//            binding.tvDescription.text = blog.description
+            ).into(binding.imageView)
+            binding.tvTitle.text = blog.postName
         }
     }
 }

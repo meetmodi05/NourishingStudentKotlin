@@ -3,9 +3,7 @@ package com.example.nourishinggeniusstudent.networking.usecases
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.nourishinggeniusstudent.model.base.BaseModel
-import com.example.nourishinggeniusstudent.model.careers.CareerDetails
 import com.example.nourishinggeniusstudent.model.data.BlogDataModel
-import com.example.nourishinggeniusstudent.model.response.CareersListResponseModel
 import com.example.nourishinggeniusstudent.networking.network.CallbackObserver
 import com.example.nourishinggeniusstudent.networking.network.Networking
 import io.reactivex.android.schedulers.AndroidSchedulers

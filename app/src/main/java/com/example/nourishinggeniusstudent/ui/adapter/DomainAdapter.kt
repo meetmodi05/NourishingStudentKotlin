@@ -1,18 +1,15 @@
 package com.example.nourishinggeniusstudent.ui.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
+import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.RvDomainLayoutBinding
-import com.example.nourishinggeniusstudent.model.casestudy.CaseStudyData
-import com.example.nourishinggeniusstudent.model.data.DomainModel
 import com.example.nourishinggeniusstudent.model.domain.DomainData
-import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
-import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
 
 class DomainAdapter(
     private val listener: (DomainData) -> Unit
@@ -25,9 +22,12 @@ class DomainAdapter(
         domainExpertList.addAll(list)
         notifyDataSetChanged()
     }
-    class DomainHolder(var binding: RvDomainLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    class DomainHolder(val mContext: Context, var binding: RvDomainLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun binding(model: DomainData) {
-            Glide.with(binding.domainImg1).load(model.featureUri).override(525, 325)
+            Glide.with(binding.domainImg1).load(model.featureUri).placeholder(
+                ContextCompat.getDrawable(mContext, R.drawable.img_1))
                 .into(binding.domainImg1)
             binding.domainTvTitle.text = model.title
         }
@@ -35,6 +35,7 @@ class DomainAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DomainHolder {
         return DomainHolder(
+            parent.context,
             RvDomainLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }

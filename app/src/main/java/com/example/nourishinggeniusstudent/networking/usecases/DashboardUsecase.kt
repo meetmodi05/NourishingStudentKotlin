@@ -1,6 +1,7 @@
 package com.example.nourishinggeniusstudent.networking.usecases
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.nourishinggeniusstudent.model.base.BaseModel
 import com.example.nourishinggeniusstudent.model.casestudy.CaseStudyData
@@ -31,6 +32,7 @@ class DashboardUsecase(
                 override fun onNext(response: DashboardResponseModel) {
                     if (response.status == 200) {
                         dashboardData?.value = response
+                        Log.d("OnNext", "onNext: $response")
                     } else {
                         errorLiveData.value = response.message
                     }
@@ -38,6 +40,7 @@ class DashboardUsecase(
 
                 override fun onError(e: Throwable) {
                     errorLiveData.value = e.localizedMessage
+                    Log.e("onError", "onError: ${e.localizedMessage}", )
                 }
 
                 override fun onComplete() {
