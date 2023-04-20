@@ -76,8 +76,10 @@ dependencies {
     implementation 'com.razorpay:checkout:1.6.26'
 
     //TestService
-//    implementation ('com.service.taas:TestService:1.2.7:release@aar'){
-//        transitive = true
-//    }
-
+    implementation ('com.service.taas:TestService:1.2.8:release@aar'){
+        transitive = true
+    }
+    implementation ('com.ginger.terpservice:RPService:1.2.3:release@aar'){
+        transitive = true
+    }
 }

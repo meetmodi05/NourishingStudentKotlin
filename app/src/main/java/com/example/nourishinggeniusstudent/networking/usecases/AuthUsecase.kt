@@ -19,6 +19,7 @@ class AuthUsecase(
     val context: Context,
     private var errorLiveData: MutableLiveData<String>,
     private var userData: MutableLiveData<User>? = null,
+    private var updateUserData: MutableLiveData<User>? = null,
     private var feedback: MutableLiveData<String>? = null,
     private var forgotPwd: MutableLiveData<ForgotPasswordResponseModel>? = null,
     private var verifyOtpResponse: MutableLiveData<VerifyOtpResponse>? = null,

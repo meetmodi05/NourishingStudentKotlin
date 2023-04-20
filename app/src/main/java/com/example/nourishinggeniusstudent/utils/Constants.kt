@@ -5,7 +5,7 @@ object Constants {
     const val WEB_CLIENT_ID = "841455283152-17cqj307464kja45q5ddvtpt1df01mhf.apps.googleusercontent.com"
     const val RAZOR_PAY_KEY = "rzp_test_WQtKiaA71RUNIm"
     const val RAZOR_PAY_SECRET_KEY = "3tUOVl36PkE1vx7jLXq1ckjX"
-    const val THINK_EXAM_CLIENT_URL = "https://nourishinggenius.thinkexam.com/"
+    const val THINK_EXAM_CLIENT_URL = "nourishinggenius.thinkexam.com"
 
     const val BASIC_UNAME = "admingenius1"
     const val BASIC_PWD = "YqOM gXxo wA4U bA00 hrlV TVd9"

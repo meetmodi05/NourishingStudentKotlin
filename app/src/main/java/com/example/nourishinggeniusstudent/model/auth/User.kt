@@ -9,6 +9,7 @@ data class User(
     @SerializedName("user_email", alternate = ["email_address"]) val email: String,
     @SerializedName("role") val role: String,
     @SerializedName("name") val name: String,
+    @SerializedName("isSubscribed") val isSubscribed: Boolean = true,
     @SerializedName("contact_number") val contactNumber: String,
     @SerializedName("date_of_birth") val dob: String,
     @SerializedName("user_address") val address: String,

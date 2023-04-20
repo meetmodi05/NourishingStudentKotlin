@@ -2,6 +2,8 @@ package com.example.nourishinggeniusstudent.ui.view.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.ActivityResult
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardBinding
+import com.example.nourishinggeniusstudent.databinding.ActivityDashBoardNewBinding
 import com.example.nourishinggeniusstudent.model.response.DashboardResponseModel
 import com.example.nourishinggeniusstudent.ui.adapter.*
 import com.example.nourishinggeniusstudent.ui.view.caseStudy.CaseStudyActivity
@@ -28,28 +31,37 @@ import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingAc
 import com.example.nourishinggeniusstudent.utils.Constants
 import com.example.nourishinggeniusstudent.utils.isEmail
 import com.example.nourishinggeniusstudent.utils.showToast
+import com.service.taas.Activities.StartTestService
+import com.service.taas.Helpers.BetterActivityResult
+import java.util.Base64
 
 class DashBoardActivity : BaseActivity() {
-    private lateinit var binding: ActivityDashBoardBinding
+    private lateinit var binding: ActivityDashBoardNewBinding
     private val viewModel by lazy { DashboardViewModel(this) }
     private val caseStudyViewModel by lazy { CaseStudyViewModel(this) }
     private val domainViewModel by lazy { DomainViewModel(this) }
     private val profileViewModel by lazy { AuthViewModel(this) }
+
+
+    val activityLauncher: BetterActivityResult<Intent, ActivityResult> =
+        BetterActivityResult.registerActivityForResult(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDashBoardBinding.inflate(layoutInflater)
+        binding = ActivityDashBoardNewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel.isLoading.value = true
         viewModel.getDashboardData()
         profileViewModel.getuserinfobyid(session?.user?.userId.toString())
         setClickListeners()
         setObservers()
-        Glide.with(this).load(
+        /*Glide.with(this).load(
             if (session?.user?.profilePic.isNullOrBlank()) {
                 session?.user?.profilePic
             } else R.drawable.round_person_28
         ).centerCrop().placeholder(getDrawable(R.drawable.round_person_28)).centerCrop()
-            .into(binding.ivPersonIcon)
+            .into(binding.ivPersonIcon)*/
+        binding.tvStudentName.text = session?.user?.name
     }
 
     private fun setObservers() {
@@ -59,7 +71,7 @@ class DashBoardActivity : BaseActivity() {
         }
         viewModel.subscribeToNewsletter.observe(this) {
             showToast(it)
-            binding.mailET.setText("")
+            binding.etEmail.setText("")
         }
         profileViewModel.userData.observe(this) {
             session?.user = it
@@ -96,30 +108,59 @@ class DashBoardActivity : BaseActivity() {
     }
 
     private fun setClickListeners() {
-        binding.ivMenuIcon.setOnClickListener { binding.dr1.openDrawer(GravityCompat.START) }
+        /*binding.ivMenuIcon.setOnClickListener { binding.dr1.openDrawer(GravityCompat.START) }
         binding.customLayouts.ivClose.setOnClickListener {
             binding.dr1.closeDrawer(
                 GravityCompat.START, true
             )
-        }
+        }*/
         binding.llFirst.setOnClickListener {
 //            val careerIntent = Intent(this, DegreeList::class.java)
             val careerIntent = Intent(this, CareerActivity::class.java)
             startActivity(careerIntent)
         }
         binding.secondLL2.setOnClickListener {
-            val intent = Intent(this, IdentifyGeniusActivity::class.java)
-            startActivity(intent)
+            if (session?.user?.isSubscribed == true) {
+                val name64: String =
+                    Base64.getEncoder().encodeToString(session?.user?.name?.toByteArray())
+                val email64: String =
+                    Base64.getEncoder().encodeToString(session?.user?.email?.toByteArray())
+                val testCode64: String =
+                    Base64.getEncoder().encodeToString("5450700001".toByteArray())
+
+                activityLauncher.setOnActivityResult {
+                    Log.e(TAG, "onCreate: $it")
+                }
+
+                StartTestService.callTestLinkServiceForData(
+                    this,
+                    Constants.THINK_EXAM_CLIENT_URL,
+                    name64,
+                    email64,
+                    "Career Guidance Program",
+                    "",
+                    "",
+                    "120",
+                    session?.user?.profilePic,
+                    testCode64,
+                    activityLauncher
+                )
+            } else {
+                val intent = Intent(this, IdentifyGeniusActivity::class.java)
+                startActivity(intent)
+            }
         }
         binding.llThird.setOnClickListener {
             val thirdLayoutIntent = Intent(this, GetCounsellingActivity::class.java)
             startActivity(thirdLayoutIntent)
         }
         binding.ivPersonIcon.setOnClickListener {
-            val profileIntent = Intent(this, ProfileActivity::class.java)
-            startActivity(profileIntent)
+            /*val profileIntent = Intent(this, ProfileActivity::class.java)
+            startActivity(profileIntent)*/
+            val settingIntent = Intent(this, SettingActivity::class.java)
+            startActivity(settingIntent)
         }
-        binding.customLayouts.innerLl1.setOnClickListener {
+        /*binding.customLayouts.innerLl1.setOnClickListener {
             val homeIntent = Intent(this, DashBoardActivity::class.java)
             startActivity(homeIntent)
         }
@@ -150,7 +191,7 @@ class DashBoardActivity : BaseActivity() {
         binding.customLayouts.innerLl9.setOnClickListener {
             val settingIntent = Intent(this, SettingActivity::class.java)
             startActivity(settingIntent)
-        }
+        }*/
 
         binding.tvSeeAll.setOnClickListener {
             startActivity(
@@ -174,12 +215,17 @@ class DashBoardActivity : BaseActivity() {
             )
         }
         binding.tvSubscribe.setOnClickListener {
-            if (!binding.mailET.text.toString().isEmail()) {
-                binding.mailET.error = "Invalid Email"
+            if (!binding.etEmail.text.toString().isEmail()) {
+                binding.etEmail.error = "Invalid Email"
                 return@setOnClickListener
             }
             viewModel.isLoading.value = true
-            viewModel.subscribeToNewsletter(binding.mailET.text.toString())
+            viewModel.subscribeToNewsletter(binding.etEmail.text.toString())
         }
     }
+
+    companion object {
+        private val TAG = this::class.java.name
+    }
+
 }

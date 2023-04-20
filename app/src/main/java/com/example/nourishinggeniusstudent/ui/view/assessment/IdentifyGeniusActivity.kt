@@ -1,16 +1,21 @@
 package com.example.nourishinggeniusstudent.ui.view.assessment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.nourishinggeniusstudent.databinding.ActivityIdentifyGeniusBinding
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
+import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingActivity
+import com.example.nourishinggeniusstudent.utils.Constants
+import com.service.taas.Activities.StartTestService
+import com.service.taas.Helpers.BetterActivityResult
 import java.util.*
 
 
 class IdentifyGeniusActivity : BaseActivity() {
     private lateinit var binding: ActivityIdentifyGeniusBinding
-
-//    val activityLauncher: BetterActivityResult<Intent, ActivityResult> =
-//        BetterActivityResult.registerActivityForResult(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,22 +23,13 @@ class IdentifyGeniusActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.backAeroIcon.setOnClickListener { finish() }
-        val name64: String = Base64.getEncoder().encodeToString(session?.user?.name?.toByteArray())
-        val email64: String =
-            Base64.getEncoder().encodeToString(session?.user?.email?.toByteArray())
-        val testCode64: String = Base64.getEncoder().encodeToString("5450700001".toByteArray())
-        /*StartTestService.callTestLinkServiceForData(
-            this,
-            Constants.THINK_EXAM_CLIENT_URL,
-            name64,
-            email64,
-            "Career Guidance Program",
-            "",
-            "",
-            "120",
-            session?.user?.profilePic,
-            testCode64,
-            activityLauncher
-        )*/
+        binding.btnBuy.setOnClickListener {
+            startActivity(Intent(this, GetCounsellingActivity::class.java))
+        }
     }
+
+    companion object {
+        private val TAG = this::class.java.name
+    }
+
 }

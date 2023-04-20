@@ -14,6 +14,7 @@ import okhttp3.RequestBody
 class AuthViewModel(mContext: Context) : BaseViewModel(mContext) {
 
     val userData: MutableLiveData<User> = MutableLiveData()
+    val updateUserData: MutableLiveData<User> = MutableLiveData()
     val forgotPwd: MutableLiveData<ForgotPasswordResponseModel> = MutableLiveData()
     val otpResponse: MutableLiveData<VerifyOtpResponse> = MutableLiveData()
     val resetPwd: MutableLiveData<BaseModel<Any?>> = MutableLiveData()
@@ -24,6 +25,7 @@ class AuthViewModel(mContext: Context) : BaseViewModel(mContext) {
         mContext,
         errorLiveData,
         userData,
+        updateUserData,
         feedback,
         forgotPwd,
         otpResponse,
@@ -34,6 +36,7 @@ class AuthViewModel(mContext: Context) : BaseViewModel(mContext) {
     fun registerUser(name: String, email: String, password: String, contact: String) {
         usecase.registerUser(name, email, password, contact)
     }
+
     fun socialLogin(name: String, email: String, password: String, contact: String) {
         usecase.socialLogin(name, email, password, contact)
     }

@@ -132,9 +132,9 @@
     <string name="contactNumber">Contact Number</string>
     <string name="already_have_any_account">Already Have an Account? <b>Login</b></string>
     <string name="email_example">vijaybhuva90@gmail.com</string>
-    <string name="explore_careers">Explore Careers</string>
+    <string name="explore_careers">Careers</string>
     <string name="identify_your_genius">Identify\nyour Genius</string>
-    <string name="get_on_counselling">Get | on |\nCounselling</string>
+    <string name="get_on_counselling">Get 1 on 1 Counselling</string>
     <string name="top_expert">Top Expert</string>
     <string name="case_studies_of_highly_successful_people">Case Studies of highly successful people</string>
     <string name="e_mail_id">E-mail ID</string>
@@ -164,5 +164,12 @@
     <string name="fb_login_protocol_scheme">fb888528152351382</string>
     <string name="facebook_client_token">02af25d1d8c28a34fc7cb5384d314420</string>
     <string name="add_preferred_time"><u>Add Preferred Time</u></string>
+    <string name="view_reports">View\nReports</string>
+    <string name="blogs_title">Navigate Your Career Path with These Blogs</string>
+    <string name="continue_reading">Continue Reading</string>
+    <string name="domain_experts_title">Pioneering Experts Leading the Way</string>
+    <string name="case_studies_title">Industry Insights: Case Studies of Trends and Best Practices</string>
+    <string name="news_letter_title">Connect with Us</string>
+    <string name="read_more">Read More</string>
 
 </resources>

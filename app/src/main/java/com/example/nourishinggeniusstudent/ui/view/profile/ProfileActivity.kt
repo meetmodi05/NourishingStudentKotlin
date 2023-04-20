@@ -45,6 +45,13 @@ class ProfileActivity : BaseActivity() {
             setUserData(it)
             viewModel.isLoading.value = false
         }
+        viewModel.updateUserData.observe(this) {
+            showToast("User Updated Successfully")
+            session?.user = it
+            setUserData(it)
+            viewModel.isLoading.value = false
+            finish()
+        }
     }
 
     private fun setUserData(user: User?) {
@@ -57,7 +64,8 @@ class ProfileActivity : BaseActivity() {
             } else if (user?.profilePic.isNullOrBlank()) {
                 user?.profilePic
             } else R.drawable.img_student
-        ).centerCrop().placeholder(getDrawable(R.drawable.img_student)).centerCrop().into(binding.imageUploader)
+        ).centerCrop().placeholder(getDrawable(R.drawable.img_student)).centerCrop()
+            .into(binding.imageUploader)
     }
 
     private fun initView() {

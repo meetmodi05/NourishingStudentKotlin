@@ -30,3 +30,6 @@
 -keep class com.razorpay.** {*;}
 
 -optimizations !method/inlining/*
+
+#ThinkExam RUles
+-keep class com.service.taas.** { *; }

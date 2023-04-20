@@ -21,11 +21,14 @@ class SplashActivity : BaseActivity() {
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if (session?.isLoggedIn == true) {
-                startActivity(Intent(this@SplashActivity, DashBoardActivity::class.java))
+            val intent = if (session?.isLoggedIn == true) {
+
+                Intent(this@SplashActivity, DashBoardActivity::class.java)
             } else {
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                Intent(this@SplashActivity, LoginActivity::class.java)
             }
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }, 1500)
 
     }
