@@ -52,6 +52,10 @@
             android:layout_height="wrap_content"
             android:padding="3dp"
             app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:hintEnabled="false">
 
             <AutoCompleteTextView
@@ -59,6 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="10dp"
                 android:hint="Search among 1 blogs..."
                 android:imeOptions="actionDone"
                 android:inputType="textAutoComplete"
@@ -91,5 +97,6 @@
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="10dp"
         android:padding="5dp"
+        tools:listitem="@layout/most_popular_layout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 </androidx.appcompat.widget.LinearLayoutCompat>

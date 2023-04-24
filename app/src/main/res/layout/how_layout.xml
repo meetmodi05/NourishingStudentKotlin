@@ -44,7 +44,6 @@
             android:text="@string/how_long_text"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:justificationMode="inter_word"
             android:padding="5dp"
             tools:layout_editor_absoluteX="0dp" />
     </ScrollView>

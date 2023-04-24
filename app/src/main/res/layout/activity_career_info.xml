@@ -7,9 +7,10 @@
     android:orientation="vertical"
     tools:context=".ui.view.career.CareerInfo">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:background="@color/grey"
         android:gravity="center_vertical"
         android:paddingHorizontal="10dp">
 
@@ -17,6 +18,7 @@
             android:id="@+id/back_aero_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:tint="@color/white"
             android:layout_alignParentStart="true"
             android:src="@drawable/keyboard_backspace" />
 
@@ -24,12 +26,15 @@
             android:id="@+id/career_info_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center_vertical"
             android:text="@string/career_info"
-            android:textColor="@color/black"
+            app:tint="@color/white"
+            android:fontFamily="@font/montserrat_medium"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     <androidx.core.widget.NestedScrollView
@@ -40,14 +45,14 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@drawable/ll_bg"
                 android:layout_marginBottom="25dp"
+                android:background="@drawable/bg_bottom_rounded"
+                android:backgroundTint="@color/grey"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -69,6 +74,7 @@
                     android:gravity="center_horizontal"
                     android:padding="15dp"
                     android:text="@string/law"
+                    android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -78,35 +84,50 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <include layout="@layout/layout_career_details"
-                 android:id="@+id/layoutImpact"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="25dp">
 
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutSpecialization"/>
+                <include
+                    android:id="@+id/layoutImpact"
+                    layout="@layout/layout_career_details" />
 
-
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutCareerPaths"/>
-
-
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutWork"/>
-
-
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutWorkLife"/>
-
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutAdvantages"/>
+                <include
+                    android:id="@+id/layoutSpecialization"
+                    layout="@layout/layout_career_details" />
 
 
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutInvestment"/>
+                <include
+                    android:id="@+id/layoutCareerPaths"
+                    layout="@layout/layout_career_details" />
 
 
-            <include layout="@layout/layout_career_details"
-                android:id="@+id/layoutStrWeak"/>
+                <include
+                    android:id="@+id/layoutWork"
+                    layout="@layout/layout_career_details" />
 
+
+                <include
+                    android:id="@+id/layoutWorkLife"
+                    layout="@layout/layout_career_details" />
+
+                <include
+                    android:id="@+id/layoutAdvantages"
+                    layout="@layout/layout_career_details" />
+
+
+                <include
+                    android:id="@+id/layoutInvestment"
+                    layout="@layout/layout_career_details" />
+
+
+                <include
+                    android:id="@+id/layoutStrWeak"
+                    layout="@layout/layout_career_details" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 

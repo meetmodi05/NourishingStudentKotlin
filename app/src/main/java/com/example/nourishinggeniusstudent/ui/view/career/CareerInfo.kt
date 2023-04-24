@@ -72,32 +72,32 @@ class CareerInfo : BaseActivity() {
     private fun setClickListeners() {
         binding.backAeroIcon.setOnClickListener { finish() }
         binding.layoutImpact.tvTitle.setOnClickListener {
-            binding.layoutImpact.tvDetails.isVisible = !binding.layoutImpact.tvDetails.isVisible
+            binding.layoutImpact.llDetails.isVisible = !binding.layoutImpact.llDetails.isVisible
         }
         binding.layoutSpecialization.tvTitle.setOnClickListener {
-            binding.layoutSpecialization.tvDetails.isVisible =
-                !binding.layoutSpecialization.tvDetails.isVisible
+            binding.layoutSpecialization.llDetails.isVisible =
+                !binding.layoutSpecialization.llDetails.isVisible
         }
         binding.layoutCareerPaths.tvTitle.setOnClickListener {
-            binding.layoutCareerPaths.tvDetails.isVisible =
-                !binding.layoutCareerPaths.tvDetails.isVisible
+            binding.layoutCareerPaths.llDetails.isVisible =
+                !binding.layoutCareerPaths.llDetails.isVisible
         }
         binding.layoutAdvantages.tvTitle.setOnClickListener {
-            binding.layoutAdvantages.tvDetails.isVisible =
-                !binding.layoutAdvantages.tvDetails.isVisible
+            binding.layoutAdvantages.llDetails.isVisible =
+                !binding.layoutAdvantages.llDetails.isVisible
         }
         binding.layoutWork.tvTitle.setOnClickListener {
-            binding.layoutWork.tvDetails.isVisible = !binding.layoutWork.tvDetails.isVisible
+            binding.layoutWork.llDetails.isVisible = !binding.layoutWork.llDetails.isVisible
         }
         binding.layoutWorkLife.tvTitle.setOnClickListener {
-            binding.layoutWorkLife.tvDetails.isVisible = !binding.layoutWorkLife.tvDetails.isVisible
+            binding.layoutWorkLife.llDetails.isVisible = !binding.layoutWorkLife.llDetails.isVisible
         }
         binding.layoutInvestment.tvTitle.setOnClickListener {
-            binding.layoutInvestment.tvDetails.isVisible =
-                !binding.layoutInvestment.tvDetails.isVisible
+            binding.layoutInvestment.llDetails.isVisible =
+                !binding.layoutInvestment.llDetails.isVisible
         }
         binding.layoutStrWeak.tvTitle.setOnClickListener {
-            binding.layoutStrWeak.tvDetails.isVisible = !binding.layoutStrWeak.tvDetails.isVisible
+            binding.layoutStrWeak.llDetails.isVisible = !binding.layoutStrWeak.llDetails.isVisible
         }
     }
 

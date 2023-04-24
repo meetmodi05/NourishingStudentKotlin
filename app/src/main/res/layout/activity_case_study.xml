@@ -54,6 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
             app:hintEnabled="false">
 
             <AutoCompleteTextView
@@ -74,6 +78,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -92,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
-        tools:listitem="@layout/rv_blog_layout"
+        tools:listitem="@layout/item_case_study"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         android:gravity="center" />

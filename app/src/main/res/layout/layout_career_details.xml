@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:background="@drawable/career_info_bg"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/bg_rounded"
+    android:backgroundTint="@color/blue_light"
     android:orientation="vertical"
     android:paddingVertical="10dp"
-    android:animateLayoutChanges="true"
     android:paddingLeft="8dp">
 
 
@@ -18,27 +19,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/bulb_small"
-        android:drawablePadding="5dp"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/white"
         android:gravity="center_vertical"
         android:padding="4dp"
-        tools:text="Title"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat_semibold"
+        tools:text="Title" />
 
-    <TextView
-        android:id="@+id/tvDetails"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title8"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="10dp"
-        android:justificationMode="inter_word"
-        android:paddingHorizontal="15dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:visibility="gone"
-        tools:text="@string/lorem_ipsum" />
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title8"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingHorizontal="15dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:text="@string/lorem_ipsum" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
