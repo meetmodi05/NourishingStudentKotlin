@@ -11,6 +11,7 @@ import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.blog.BlogViewModel
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainViewModel
 import com.example.nourishinggeniusstudent.utils.Constants
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class DomainDetailsActivity : BaseActivity() {
 
@@ -32,7 +33,7 @@ class DomainDetailsActivity : BaseActivity() {
             binding.tvMiniTitle.text = it.title
             binding.tvSubTitle.text = it.position
 //            binding.tvDescription.text = Html.fromHtml(it.content, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            Glide.with(this@DomainDetailsActivity).load(it.featureUri).into(binding.imageView)
+            Glide.with(this@DomainDetailsActivity).load(it.featureUri).placeholder(getImageProgress()).into(binding.imageView)
             viewModel.isLoading.value = false
         }
     }

@@ -11,6 +11,7 @@ import com.example.nourishinggeniusstudent.databinding.ActivityCareerInfoBinding
 import com.example.nourishinggeniusstudent.model.careers.CareerDetails
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.utils.Constants
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class CareerInfo : BaseActivity() {
     private lateinit var binding: ActivityCareerInfoBinding
@@ -36,7 +37,7 @@ class CareerInfo : BaseActivity() {
 
     private fun setData(details: CareerDetails?) {
         details?.apply {
-            Glide.with(this@CareerInfo).load(careerLogo).into(binding.ivCareer)
+            Glide.with(this@CareerInfo).load(careerLogo).placeholder(getImageProgress()).into(binding.ivCareer)
             binding.tvCareerTitle.text = careerTitle
             binding.layoutImpact.tvTitle.text = getString(R.string.impact)
             binding.layoutImpact.tvDetails.text =

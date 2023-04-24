@@ -9,6 +9,7 @@ import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityBlogDetailsBinding
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.utils.Constants
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class BlogDetailsActivity : BaseActivity() {
 
@@ -30,7 +31,7 @@ class BlogDetailsActivity : BaseActivity() {
             binding.tvMiniTitle.text = it.postName
             binding.tvDescription.text =
                 Html.fromHtml(it.postContent, HtmlCompat.FROM_HTML_MODE_LEGACY)
-            Glide.with(this@BlogDetailsActivity).load(it.postImageUrl).into(binding.imageView)
+            Glide.with(this@BlogDetailsActivity).load(it.postImageUrl).placeholder(getImageProgress()).into(binding.imageView)
             viewModel.isLoading.value = false
         }
     }

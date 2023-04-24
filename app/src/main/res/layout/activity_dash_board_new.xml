@@ -15,20 +15,20 @@
         android:scrollbars="none">
 
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/cl1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/cl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivPersonIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:layout_gravity="end"
-            android:padding="8dp"
-            android:src="@drawable/ic_settings"/>
+            <ImageView
+                android:id="@+id/ivPersonIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_settings" />
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -77,8 +77,8 @@
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_marginTop="30dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/llFirst"
@@ -287,15 +287,13 @@
                     android:id="@+id/tvSeeAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/see_all_bg"
-                    android:backgroundTint="@color/purple_200"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/arrw_right"
+                    android:drawablePadding="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp"
+                    android:padding="10dp"
                     android:text="@string/continue_reading"
-                    android:textColor="@color/white"
+                    android:textColor="@color/purple_200"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -318,28 +316,27 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_topExpert"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="20dp"
-                    tools:itemCount="4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/rv_domain_layout"
-                    android:layout_height="wrap_content" />
+                    tools:itemCount="4"
+                    tools:listitem="@layout/rv_domain_layout" />
 
                 <TextView
                     android:id="@+id/tvSeeAll2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/see_all_bg"
-                    android:backgroundTint="@color/purple_200"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/arrw_right"
+                    android:drawablePadding="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp"
+                    android:padding="10dp"
                     android:text="@string/explore"
-                    android:textColor="@color/white"
+                    android:textColor="@color/purple_200"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
 
                 <TextView
                     android:id="@+id/id_case_std"
@@ -361,24 +358,28 @@
                     android:id="@+id/rv_Success"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_case_study" />
 
                 <TextView
                     android:id="@+id/tvExplore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/see_all_bg"
-                    android:backgroundTint="@color/purple_200"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/arrw_right"
+                    android:drawablePadding="5dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp"
+                    android:padding="10dp"
+                    android:paddingVertical="10dp"
                     android:text="@string/read_more"
-                    android:textColor="@color/white"
+                    android:textColor="@color/purple_200"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -430,13 +431,13 @@
 
                         <EditText
                             android:id="@+id/etEmail"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:hint="@string/enter_email_address"
                             android:inputType="textEmailAddress"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
                             android:textSize="18sp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -460,19 +461,19 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.core.widget.NestedScrollView>
-<!--
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/black">
+    <!--
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/black">
 
-        <include
-            android:id="@+id/custom_layouts"
-            layout="@layout/custom_layout" />
-    </com.google.android.material.navigation.NavigationView>-->
+            <include
+                android:id="@+id/custom_layouts"
+                layout="@layout/custom_layout" />
+        </com.google.android.material.navigation.NavigationView>-->
 </androidx.appcompat.widget.LinearLayoutCompat>

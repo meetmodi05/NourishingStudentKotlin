@@ -88,7 +88,7 @@ class DashBoardActivity : BaseActivity() {
             }
         }
 
-        binding.rvTopExpert.layoutManager = GridLayoutManager(this, 2)
+//        binding.rvTopExpert.layoutManager = GridLayoutManager(this, 2)
         val domainAdapter = DomainAdapter {
             val intent = Intent(this@DashBoardActivity, DomainDetailsActivity::class.java)
             intent.putExtra(Constants.CASE_STUDY_ID, it.id)
@@ -97,7 +97,7 @@ class DashBoardActivity : BaseActivity() {
         model.dataDexperts?.dexpertsPosts?.let { domainAdapter.setList(it) }
         binding.rvTopExpert.adapter = domainAdapter
 
-        binding.rvSuccess.layoutManager = GridLayoutManager(this, 2)
+//        binding.rvSuccess.layoutManager = GridLayoutManager(this, 2)
         val caseStudyAdapter = CaseStudyAdapter {
             val intent = Intent(this@DashBoardActivity, CaseStudyActivity::class.java)
             intent.putExtra(Constants.CASE_STUDY_ID, it.id)

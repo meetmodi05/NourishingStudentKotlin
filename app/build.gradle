@@ -60,19 +60,19 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
-    //Glide
+    //Glide - Image Loader
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
     //ImagePicker
     implementation 'io.github.ParkSangGwon:tedimagepicker:1.4.2'
 
-    //Firebase
+    //Firebase - Google Facebook Auth
     implementation platform('com.google.firebase:firebase-bom:31.4.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.facebook.android:facebook-login:latest.release'
 
-    //RazorPay
+    //RazorPay - Payment
     implementation 'com.razorpay:checkout:1.6.26'
 
     //TestService

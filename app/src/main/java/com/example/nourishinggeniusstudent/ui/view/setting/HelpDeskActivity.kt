@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.ActivityHelpDeskBinding
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 
 class HelpDeskActivity : BaseActivity() {
@@ -18,7 +19,7 @@ class HelpDeskActivity : BaseActivity() {
         setContentView(binding.root)
         binding.backIconHelpdesk.setOnClickListener { finish() }
         Glide.with(this).load(getDrawable(R.drawable.question_mark_bg)).override(312, 312)
-            .into(binding.questionIcon)
+            .placeholder(getImageProgress()).into(binding.questionIcon)
 
         binding.contactBtn.setOnClickListener {
             val url = "https://api.whatsapp.com/send?phone=+919510910352"

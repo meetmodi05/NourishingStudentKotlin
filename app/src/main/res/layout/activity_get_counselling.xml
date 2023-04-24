@@ -10,9 +10,12 @@
     <LinearLayout
         android:id="@+id/rl_third"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_rounded"
+        android:backgroundTint="@color/oceanBlue"
         android:gravity="center"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:paddingBottom="16dp">
 
         <ImageView
             android:id="@+id/back_aero_icon"
@@ -20,17 +23,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:padding="4dp"
-            android:src="@drawable/keyboard_backspace" />
+            android:src="@drawable/keyboard_backspace"
+            android:tint="@color/white" />
 
         <TextView
             android:id="@+id/packages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/packages"
             android:layout_marginStart="10dp"
-            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="@string/packages"
+            android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
@@ -39,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        tools:itemCount="3"
+        tools:listitem="@layout/rvpackageslayout" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

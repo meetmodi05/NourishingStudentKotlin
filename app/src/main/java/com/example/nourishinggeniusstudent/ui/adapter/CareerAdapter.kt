@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.CareerLayoutBinding
 import com.example.nourishinggeniusstudent.model.careers.Careers
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class CareerAdapter(
     private val careerList: ArrayList<Careers>, private val listener: (Careers) -> Unit
@@ -23,7 +24,8 @@ class CareerAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: Careers) {
             binding.tvTitle3.text = blog.career_title
-            Glide.with(mContext).load(blog.career_logo).override(512, 312).into(binding.img1)
+            Glide.with(mContext).load(blog.career_logo).override(512, 312)
+                .placeholder(mContext.getImageProgress()).into(binding.img1)
         }
     }
 

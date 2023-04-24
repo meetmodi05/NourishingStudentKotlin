@@ -7,73 +7,89 @@
     android:orientation="vertical"
     tools:context=".ui.view.blog.BlogActivity">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_rounded"
+        android:backgroundTint="@color/colorPrimary"
         android:gravity="center_vertical"
-        android:paddingHorizontal="10dp">
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="10dp">
 
-        <ImageView
-            android:id="@+id/back_aero_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/keyboard_backspace" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp">
 
-        <TextView
-            android:id="@+id/career_tv"
+            <ImageView
+                android:id="@+id/back_aero_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/keyboard_backspace"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/career_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:gravity="clip_vertical"
+                android:padding="5dp"
+                android:text="Blogs"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="5dp"
-            android:text="Blogs"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:padding="3dp"
+            app:boxBackgroundColor="@color/white"
+            app:hintEnabled="false">
 
-    </RelativeLayout>
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTV_Blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Search among 1 blogs..."
+                android:imeOptions="actionDone"
+                android:inputType="textAutoComplete"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
-        app:hintEnabled="false">
-
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTV_Blog"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Search among 1 blogs..."
-            android:imeOptions="actionDone"
-            android:inputType="textAutoComplete"
-            android:padding="10dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:padding="3dp"
+            android:visibility="gone"
+            app:hintEnabled="false">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
-        android:visibility="gone"
-        app:hintEnabled="false">
-
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/autoCompleteTV"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="@string/all"
-            android:inputType="none"
-            android:padding="10dp"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/autoCompleteTV"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="@string/all"
+                android:inputType="none"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_BLog_List"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
         android:padding="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,11 +1,13 @@
 package com.example.nourishinggeniusstudent.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.ItemCaseStudyBinding
 import com.example.nourishinggeniusstudent.model.casestudy.CaseStudyData
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class CaseStudyAdapter(
     private val listener: (CaseStudyData) -> Unit
@@ -19,10 +21,10 @@ class CaseStudyAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val binding: ItemCaseStudyBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding: ItemCaseStudyBinding,val mContext : Context) : RecyclerView.ViewHolder(binding.root) {
         fun bind(model: CaseStudyData) {
-            binding.allDomainTvTitle.text = model.title
-            Glide.with(binding.allDomainImg1).load(model.featureUri).override(525, 325)
+            binding.tvTitle.text = model.title
+            Glide.with(binding.allDomainImg1).load(model.featureUri).override(525, 325).placeholder(mContext.getImageProgress())
                 .into(binding.allDomainImg1)
         }
 
@@ -32,7 +34,7 @@ class CaseStudyAdapter(
         return ViewHolder(
             ItemCaseStudyBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ),parent.context
         )
     }
 

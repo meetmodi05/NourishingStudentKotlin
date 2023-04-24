@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.ui.dialogs.ProgressDialog
 import com.example.nourishinggeniusstudent.utils.Session
@@ -60,8 +61,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun showSoftKeyboard(editText: EditText?) {
-        val imm =
-            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
     }
 
@@ -90,8 +90,7 @@ open class BaseActivity : AppCompatActivity() {
 
 
     fun requestAppPermissions(
-        requestedPermissions: Array<String?>,
-        requestCode: Int, listener: PermissionListener?
+        requestedPermissions: Array<String?>, requestCode: Int, listener: PermissionListener?
     ) {
         permissionListener = listener
         var permissionCheck = PackageManager.PERMISSION_GRANTED
@@ -106,15 +105,12 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         for (permission in permissions) {
             if (ActivityCompat.checkSelfPermission(
-                    this,
-                    permission
+                    this, permission
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
                 permissionListener?.onPermissionGranted(requestCode)

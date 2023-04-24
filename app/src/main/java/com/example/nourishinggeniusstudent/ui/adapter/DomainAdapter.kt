@@ -13,6 +13,7 @@ import com.example.nourishinggeniusstudent.model.data.DomainModel
 import com.example.nourishinggeniusstudent.model.domain.DomainData
 import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class DomainAdapter(
     private val listener: (DomainData) -> Unit
@@ -25,17 +26,17 @@ class DomainAdapter(
         domainExpertList.addAll(list)
         notifyDataSetChanged()
     }
-    class DomainHolder(var binding: RvDomainLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class DomainHolder(var binding: RvDomainLayoutBinding,val mContext:Context) : RecyclerView.ViewHolder(binding.root) {
         fun binding(model: DomainData) {
             Glide.with(binding.domainImg1).load(model.featureUri).override(525, 325)
-                .into(binding.domainImg1)
+                .placeholder(mContext.getImageProgress()).into(binding.domainImg1)
             binding.domainTvTitle.text = model.title
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DomainHolder {
         return DomainHolder(
-            RvDomainLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            RvDomainLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false),parent.context
         )
     }
 

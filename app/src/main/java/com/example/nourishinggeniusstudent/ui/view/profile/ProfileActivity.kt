@@ -13,6 +13,7 @@ import com.example.nourishinggeniusstudent.ui.view.auth.AuthViewModel
 import com.example.nourishinggeniusstudent.ui.view.auth.LoginActivity
 import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.utils.DateUtils
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 import com.example.nourishinggeniusstudent.utils.showToast
 import gun0912.tedimagepicker.builder.TedImagePicker
 import java.util.*
@@ -64,7 +65,7 @@ class ProfileActivity : BaseActivity() {
             } else if (user?.profilePic.isNullOrBlank()) {
                 user?.profilePic
             } else R.drawable.img_student
-        ).centerCrop().placeholder(getDrawable(R.drawable.img_student)).centerCrop()
+        ).centerCrop().placeholder(getImageProgress()).centerCrop()
             .into(binding.imageUploader)
     }
 
@@ -93,7 +94,7 @@ class ProfileActivity : BaseActivity() {
 
             TedImagePicker.with(this).start {
                 profilePic = it
-                Glide.with(this).load(it).centerCrop().into(binding.imageUploader)
+                Glide.with(this).load(it).centerCrop().placeholder(getImageProgress()).into(binding.imageUploader)
             }
 
         }

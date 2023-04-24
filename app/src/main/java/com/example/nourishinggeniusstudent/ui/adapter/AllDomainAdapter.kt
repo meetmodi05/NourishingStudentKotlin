@@ -1,5 +1,6 @@
 package com.example.nourishinggeniusstudent.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,18 +8,19 @@ import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.ItemExpertsBinding
 import com.example.nourishinggeniusstudent.model.data.TopExpertModel
 import com.example.nourishinggeniusstudent.ui.view.domain.DomainActivity
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class AllDomainAdapter(
     private val topExpertList: ArrayList<TopExpertModel>
 ) : RecyclerView.Adapter<AllDomainAdapter.ViewHolder>() {
-    class ViewHolder(val binding: ItemExpertsBinding) :
+    class ViewHolder(val binding: ItemExpertsBinding, val mContext: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(topExpertModel: TopExpertModel) {
             binding.allDomainImg1.setImageResource(topExpertModel.img!!)
             binding.allDomainTvTitle.text = topExpertModel.title
             binding.allDomainTvDesignation.text = topExpertModel.designation
             Glide.with(binding.allDomainImg1).load(topExpertModel.img).override(525, 325)
-                .into(binding.allDomainImg1)
+                .placeholder(mContext.getImageProgress()).into(binding.allDomainImg1)
         }
 
     }
@@ -27,7 +29,7 @@ class AllDomainAdapter(
         return ViewHolder(
             ItemExpertsBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ),parent.context
         )
     }
 

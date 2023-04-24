@@ -11,6 +11,7 @@ import com.example.nourishinggeniusstudent.R
 import com.example.nourishinggeniusstudent.databinding.MostPopularLayoutBinding
 import com.example.nourishinggeniusstudent.model.data.BlogDataModel
 import com.example.nourishinggeniusstudent.model.data.BlogModel
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class BlogAdapter(
     private val blogList: ArrayList<BlogDataModel>, private val listener: (BlogDataModel) -> Unit
@@ -42,7 +43,7 @@ class BlogAdapter(
                 ContextCompat.getDrawable(
                     mContext, R.drawable.img_1
                 )
-            ).centerCrop().into(binding.imageView)
+            ).centerCrop().placeholder(mContext.getImageProgress()).into(binding.imageView)
             binding.tvMiniTitle.text = blog.postName
 //            binding.tvDescription.text = blog.description
         }

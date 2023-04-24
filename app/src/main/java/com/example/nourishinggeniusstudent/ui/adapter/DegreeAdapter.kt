@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.CareerLayoutBinding
 import com.example.nourishinggeniusstudent.model.careers.Careers
 import com.example.nourishinggeniusstudent.model.careers.EducationDegree
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class DegreeAdapter(
     private val list: ArrayList<EducationDegree>,
@@ -18,7 +19,7 @@ class DegreeAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun binding(data: EducationDegree) {
             binding.tvTitle3.text = data.title
-            Glide.with(mContext).load(data.logo).override(512, 312).into(binding.img1)
+            Glide.with(mContext).load(data.logo).override(512, 312).placeholder(mContext.getImageProgress()).into(binding.img1)
         }
     }
 

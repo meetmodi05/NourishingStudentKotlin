@@ -10,6 +10,7 @@ import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.ui.view.profile.ProfileActivity
 import com.example.nourishinggeniusstudent.ui.view.subscription.EnrollmentActivity
 import com.example.nourishinggeniusstudent.ui.view.subscription.GetCounsellingActivity
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class SettingActivity : BaseActivity() {
     private lateinit var binding: ActivitySettingBinding
@@ -56,6 +57,6 @@ class SettingActivity : BaseActivity() {
                 session?.user?.profilePic
             } else R.drawable.img_student
         ).centerCrop().circleCrop().placeholder(getDrawable(R.drawable.img_student)).centerCrop()
-            .circleCrop().into(binding.profileIcon)
+            .circleCrop().placeholder(getImageProgress()).into(binding.profileIcon)
     }
 }

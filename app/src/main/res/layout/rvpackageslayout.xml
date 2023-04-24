@@ -14,6 +14,7 @@
         android:paddingHorizontal="12dp"
         android:paddingVertical="10dp"
         android:background="@drawable/img_bg"
+        android:backgroundTint="@color/purple_500"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -38,7 +39,8 @@
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="5dp"
             android:text="@string/_2_counseling_1_to_1_sessions_with_career_counselor"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -53,14 +55,12 @@
             android:backgroundTint="@color/white"
             android:paddingHorizontal="25dp"
             android:text="@string/buy_now"
-            android:textAlignment="center"
+            android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/montserrat_semibold"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

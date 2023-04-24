@@ -3,6 +3,7 @@ package com.example.nourishinggeniusstudent.ui.view.career
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.nourishinggeniusstudent.ui.adapter.CareerAdapter
@@ -12,7 +13,7 @@ import com.example.nourishinggeniusstudent.ui.view.base.BaseActivity
 import com.example.nourishinggeniusstudent.utils.Constants
 
 class CareerActivity : BaseActivity() {
-    private var adapter: CareerAdapter ?= null
+    private var adapter: CareerAdapter? = null
     private lateinit var binding: ActivityCareerBinding
     private val viewModel by lazy { CareerViewModel(this@CareerActivity) }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +46,7 @@ class CareerActivity : BaseActivity() {
     }
 
     fun setUpAdapter(careerList: ArrayList<Careers>) {
-        binding.recyclerView.layoutManager =
-            StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
         adapter = CareerAdapter(careerList) {
             val intent = Intent(this@CareerActivity, CareerInfo::class.java)
             intent.putExtra(Constants.CAREER_ID, it.career_id)

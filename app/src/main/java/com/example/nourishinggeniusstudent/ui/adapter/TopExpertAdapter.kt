@@ -8,17 +8,18 @@ import com.bumptech.glide.Glide
 import com.example.nourishinggeniusstudent.databinding.RvTopExpertLayoutBinding
 import com.example.nourishinggeniusstudent.model.data.TopExpertModel
 import com.example.nourishinggeniusstudent.ui.view.home.DashBoardActivity
+import com.example.nourishinggeniusstudent.utils.getImageProgress
 
 class TopExpertAdapter(
     private val context: Context, private val topExpertList: ArrayList<TopExpertModel>
 ) : RecyclerView.Adapter<TopExpertAdapter.ViewHolder>() {
-    inner class ViewHolder(private val binding: RvTopExpertLayoutBinding) :
+    inner class ViewHolder(private val binding: RvTopExpertLayoutBinding, val mContext: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun binding(blog: TopExpertModel) {
             binding.topExpertImg1.setImageResource(blog.img!!)
             binding.topExpertTvTitle.text = blog.title
             Glide.with(binding.topExpertImg1).load(topExpertList[position].img).override(600, 512)
-                .into(binding.topExpertImg1)
+                .placeholder(mContext.getImageProgress()).into(binding.topExpertImg1)
         }
     }
 
@@ -26,7 +27,7 @@ class TopExpertAdapter(
         return ViewHolder(
             RvTopExpertLayoutBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ), parent.context
         )
     }
 

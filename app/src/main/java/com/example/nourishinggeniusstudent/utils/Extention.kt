@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -69,3 +70,12 @@ fun String.getUrlName(): String {
 fun AppCompatEditText.placeCursorToEnd() {
     this.setSelection(this.getValue().length)
 }
+
+fun Context.getImageProgress(): CircularProgressDrawable {
+    val circularProgressDrawable = CircularProgressDrawable(this)
+    circularProgressDrawable.strokeWidth = 5f
+    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.start()
+    return circularProgressDrawable
+}
+
